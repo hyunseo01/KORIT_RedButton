@@ -1,5 +1,6 @@
 "use client";
 
+import Input from "@/components/boardGame/Input";
 import Select from "@/components/boardGame/Select";
 import BoardGame, { BoardData } from "@/data/GameData";
 import { SlArrowRight, SlMagnifier } from "react-icons/sl";
@@ -52,35 +53,12 @@ const page = () => {
             padding: "40px 0",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-            }}
-          >
-            <span
-              style={{ color: "#7b5c40", fontWeight: "700", fontSize: "16px" }}
-            >
-              게임 이름
-            </span>
-            <div
-              style={{
-                width: "450px",
-                height: "40px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                border: "1px solid #D2D2D2",
-                padding: "8px 16px",
-                color: "#979797",
-                backgroundColor: "white",
-              }}
-            >
-              <input type="text" placeholder="게임 이름을 입력하세요 " />
-              <SlMagnifier />
-            </div>
-          </div>
+          <Input
+            width={450}
+            height={40}
+            title="게임이름"
+            placeholder="게임 이름을 입력하세요."
+          />
           <div
             style={{
               display: "flex",
@@ -89,7 +67,7 @@ const page = () => {
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <Select width={450} height={40} title={"지역 선택"} />
+              <Select width={450} height={40} title={"지역선택"} />
             </div>
           </div>
         </div>
