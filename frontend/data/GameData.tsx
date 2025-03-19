@@ -34,7 +34,7 @@ export const BoardData = [
     EnName: "Rummikub",
     Image:
       "https://redbutton.co.kr/wp-content/uploads/2024/09/%EB%A3%A8%EB%AF%B8%ED%81%90%EB%B8%8C.png",
-    info: "",
+    info: "숫자 맞추깅~쀼",
     Level: "Normal",
     People: "2-6인",
     RunningTime: "30분",
@@ -94,7 +94,7 @@ export const BoardData = [
     EnName: "Kushi Express",
     Image:
       "https://redbutton.co.kr/wp-content/uploads/2024/09/%EA%BC%AC%EC%B9%98%EC%9D%98_%EB%8B%AC%EC%9D%B8-removebg-preview.png",
-    info: "",
+    info: "꼬치 꼽깅~쀼",
     Level: "Very Easy",
     People: "2-4인",
     RunningTime: "15분",
@@ -104,10 +104,12 @@ type BoardGameProps = {
   KoName: string;
   EnName: string;
   Image: string;
+  ClickInfo: () => void;
 };
-const BoardGame = ({ KoName, EnName, Image }: BoardGameProps) => {
+const BoardGame = ({ KoName, EnName, Image, ClickInfo }: BoardGameProps) => {
   return (
     <div
+      onClick={ClickInfo}
       style={{
         display: "flex",
         flexDirection: "column",

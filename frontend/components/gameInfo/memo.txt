@@ -1,0 +1,53 @@
+type BoardGameInfoProps = {
+  KoName: string;
+  EnName: string;
+  Image: string;
+  info: string;
+  Level: string;
+  People: string;
+  RunningTime: string;
+};
+const BoardGameInfo = ({
+  KoName,
+  EnName,
+  Image,
+  info,
+  Level,
+  People,
+  RunningTime,
+}: boardGameInfoProps) => {
+  return (
+    <section>
+      <div>
+        <div>
+          <img src={Image} alt="" />
+        </div>
+        <div>
+          <div>
+            <div>
+              <div>
+                {" "}
+                <span>{KoName}</span>
+                <span>{EnName}</span>
+              </div>
+
+              <span>
+                <img src={Image} alt="" />
+              </span>
+            </div>
+            <div>
+              <span>{info}</span>
+            </div>
+            <div>
+              <span>{Level}</span>
+              <span>{People}</span>
+              <span>{RunningTime}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default BoardGameInfo;
