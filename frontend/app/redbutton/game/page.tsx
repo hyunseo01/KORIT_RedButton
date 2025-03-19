@@ -61,12 +61,20 @@ const page = () => {
             padding: "40px 0",
           }}
         >
-          <Input
-            width={450}
-            height={40}
-            title="게임이름"
-            placeholder="게임 이름을 입력하세요."
-          />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
+            <Input
+              width={450}
+              height={40}
+              title="게임이름"
+              placeholder="게임 이름을 입력하세요."
+            />
+          </div>
           <div
             style={{
               display: "flex",
