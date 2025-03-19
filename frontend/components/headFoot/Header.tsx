@@ -41,8 +41,10 @@ const Header = ({ onBrandHover }: { onBrandHover: () => void }) => {
           color: "#EDECEA",
           flexDirection: "row",
           margin: "0 auto",
-          padding: "25px",
+          padding: "25px 0",
           justifyContent: "space-between",
+          position: "relative",
+          // zIndex: 1,
         }}
       >
         <Link href={"/"}>
@@ -70,11 +72,11 @@ const Header = ({ onBrandHover }: { onBrandHover: () => void }) => {
             }}
           >
             {[
-              { name: "BRAND", href: "/brand" },
-              { name: "BOARD GAME", href: "/boardgame" },
-              { name: "MENU", href: "/menu" },
-              { name: "STORE", href: "/store" },
-              { name: "CONTACT", href: "/contact" },
+              { name: "BRAND", href: "/redbutton/brand" },
+              { name: "BOARD GAME", href: "/redbutton/game" },
+              { name: "MENU", href: "/redbutton/menu" },
+              { name: "STORE", href: "/redbutton/store" },
+              { name: "CONTACT", href: "/redbutton/contact" },
             ].map((item, index) => (
               <Link
                 key={index}
@@ -105,16 +107,19 @@ const Header = ({ onBrandHover }: { onBrandHover: () => void }) => {
         >
           <div
             style={{
-              width: "120px",
-              height: "30px",
+              width: "121px",
+              height: "32px",
               fontSize: "16px",
+              letterSpacing: "-1.2px",
               backgroundColor: "#605549",
               padding: "7px 20px 9px 17px",
               color: "#ffffff",
-              borderRadius: "5px",
+              borderRadius: "4px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              textAlign: "center",
+              whiteSpace: "nowrap", //줄바꿈되지않는머시기
             }}
           >
             가맹사업 안내
@@ -132,8 +137,8 @@ const Header = ({ onBrandHover }: { onBrandHover: () => void }) => {
           >
             <div
               style={{
-                width: "70px",
-                height: "30px",
+                width: "72px",
+                height: "32px",
                 backgroundColor: "#4c4c4c",
                 padding: "7px 10px 9px 10px",
                 borderRadius: "5px",
@@ -169,10 +174,16 @@ const Header = ({ onBrandHover }: { onBrandHover: () => void }) => {
                   zIndex: 10,
                 }}
               >
-                <ul style={{ listStyle: "none", padding: "5px 0", margin: 0 }}>
+                <ul
+                  style={{
+                    listStyle: "none",
+
+                    margin: 0,
+                  }}
+                >
                   <li
                     style={{
-                      padding: "7px 10px 9px",
+                      padding: "2px 7.5px 4.5px",
                       cursor: "pointer",
                       textAlign: "center",
                     }}

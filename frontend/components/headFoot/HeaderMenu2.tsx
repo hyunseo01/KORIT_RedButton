@@ -1,34 +1,36 @@
-const Header = () => {
-  return (
-    <header
-      style={{
-        backgroundColor: "#332f2d",
+import Link from "next/link";
+import { IoIosArrowDown } from "react-icons/io";
 
-        padding: "24px 0px 35px",
-      }}
-    >
+const HeaderMenu2 = () => {
+  return (
+    <div>
       <div
         style={{
+          color: "#b2b2b2",
+          padding: "25px 0",
+          backgroundColor: "#332f2d",
+          position: "absolute",
+          zIndex: 10,
           width: "100%",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          display: "flex",
         }}
       >
-        <div style={{ width: "78px", height: "161px" }}></div>
         <div
           style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
             display: "flex",
-            color: "#b2b2b2",
-            padding: "0px 0px 0px 100px",
+            justifyContent: "space-between",
           }}
         >
+          <div style={{ flex: "0.55" }}></div>
+          <div></div>
           <div
             style={{
+              flex: "0.71",
               display: "flex",
               flexDirection: "column",
               gap: "12px",
-              padding: "5px 0px 0px 6px",
+              //   padding: "5px 0px 0px 6px",
             }}
           >
             <span>레드버튼 소개</span>
@@ -38,9 +40,10 @@ const Header = () => {
           </div>
           <div
             style={{
+              flex: "0.95",
               display: "flex",
               flexDirection: "column",
-              padding: "5px 0px 0px 32px",
+              //   padding: "5px 0px 0px 32px",
               gap: "12px",
             }}
           >
@@ -49,9 +52,10 @@ const Header = () => {
           </div>
           <div
             style={{
+              flex: "0.7",
               display: "flex",
               flexDirection: "column",
-              padding: "5px 0px 0px 52px",
+              //   padding: "5px 0px 0px 52px",
               gap: "12px",
             }}
           >
@@ -61,18 +65,20 @@ const Header = () => {
           </div>
           <div
             style={{
+              flex: "0.7",
               display: "flex",
               flexDirection: "column",
-              padding: "5px 0px 0px 62px",
+              //   padding: "5px 0px 0px 62px",
             }}
           >
             <span>매장찾기</span>
           </div>
           <div
             style={{
+              flex: "1",
               display: "flex",
               flexDirection: "column",
-              padding: "5px 0px 0px 75px",
+              //   padding: "5px 0px 0px 75px",
               gap: "12px",
             }}
           >
@@ -81,7 +87,6 @@ const Header = () => {
             <span>자주묻는 질문</span>
             <span>고객의견</span>
           </div>
-          <div style={{ width: "155px", height: "161px" }}></div>
           <div
             style={{
               display: "flex",
@@ -103,8 +108,8 @@ const Header = () => {
           </div>
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 
-export default Header;
+export default HeaderMenu2;
