@@ -2,10 +2,18 @@
 
 import Input from "@/components/boardGame/Input";
 import Select from "@/components/boardGame/Select";
+import BoardGameInfo from "@/components/gameInfo/gameInfo";
 import BoardGame, { BoardData } from "@/data/GameData";
+import { useState } from "react";
 import { SlArrowRight, SlMagnifier } from "react-icons/sl";
 
 const page = () => {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  const ClickEvent = (index: number) => {
+    setSelectedIndex(selectedIndex === index ? null : index);
+  };
+
   return (
     <div>
       <div
@@ -72,20 +80,65 @@ const page = () => {
           </div>
         </div>
       </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          width: "100%",
-          maxWidth: "1050px",
-          margin: "0 auto",
-          rowGap: "74px",
-          padding: "100px 0",
-        }}
-      >
-        {BoardData.map((v) => (
-          <BoardGame Image={v.Image} KoName={v.KoName} EnName={v.EnName} />
-        ))}
+
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <div
+          style={{
+            gap: "20px",
+            marginTop: "50px",
+            cursor: "pointer",
+            display: "flex",
+            flexWrap: "wrap",
+            width: "100%",
+            maxWidth: "1050px",
+            margin: "0 auto",
+            rowGap: "74px",
+          }}
+        >
+          {BoardData.map((v, i) => (
+            <div
+              key={i}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "240px",
+                marginBottom: selectedIndex === i ? "360px" : "20px",
+              }}
+            >
+              <BoardGame
+                Image={v.Image}
+                KoName={v.KoName}
+                EnName={v.EnName}
+                ClickInfo={() => ClickEvent(i)}
+              />
+              {selectedIndex === i && (
+                <div
+                  style={{
+                    width: "100%",
+                    padding: "20px 0",
+                    marginTop: "20px",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "100vw",
+                    }}
+                  >
+                    <BoardGameInfo
+                      KoName={BoardData[i].KoName}
+                      EnName={BoardData[i].EnName}
+                      Image={BoardData[i].Image}
+                      info={BoardData[i].info}
+                      Level={BoardData[i].Level}
+                      People={BoardData[i].People}
+                      RunningTime={BoardData[i].RunningTime}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
