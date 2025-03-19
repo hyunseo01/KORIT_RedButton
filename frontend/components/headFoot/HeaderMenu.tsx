@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Header = () => {
   return (
     <header
@@ -45,7 +47,12 @@ const Header = () => {
             }}
           >
             <span>레드버튼 전용 앱</span>
-            <span>보드게임 찾기</span>
+            <Link
+              style={{ textDecoration: "none", color: "inherit" }}
+              href="/redbutton/game"
+            >
+              보드게임 찾기
+            </Link>
           </div>
           <div
             style={{

@@ -51,6 +51,8 @@ const Notice = () => {
           ))}
           <span
             style={{
+              display: "flex",
+              alignItems: "center",
               position: "absolute",
               bottom: "0",
               right: "50px",

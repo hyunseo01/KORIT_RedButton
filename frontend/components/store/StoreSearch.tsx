@@ -20,6 +20,7 @@ const StoreSearch = () => {
         }}
       >
         <img
+          style={{ padding: "0 120px" }}
           src="https://redbutton.co.kr/wp-content/uploads/2023/12/bg3-1.png"
           alt=""
         />
