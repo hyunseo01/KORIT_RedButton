@@ -5,6 +5,7 @@ const Footer = () => {
         backgroundColor: "#272422",
         display: "flex",
         justifyContent: "center",
+        height: "216px",
       }}
     >
       <div

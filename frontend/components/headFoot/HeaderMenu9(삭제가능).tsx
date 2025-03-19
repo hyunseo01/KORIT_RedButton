@@ -1,11 +1,11 @@
 import Link from "next/link";
 
 const Header = () => {
+// const HeaderMenu9 = () => {
   return (
     <header
       style={{
         backgroundColor: "#332f2d",
-
         padding: "24px 0px 35px",
       }}
     >
@@ -114,4 +114,5 @@ const Header = () => {
   );
 };
 
+// export default HeaderMenu9;
 export default Header;
