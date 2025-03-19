@@ -89,16 +89,7 @@ const page = () => {
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <span
-                style={{
-                  color: "#7b5c40",
-                  fontWeight: "700",
-                  fontSize: "16px",
-                }}
-              >
-                지역 선택
-              </span>
-              <Select />
+              <Select width={450} height={40} title={"지역 선택"} />
             </div>
           </div>
         </div>
