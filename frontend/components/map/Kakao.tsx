@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
 import { store } from "@/data/mapData/mapData"; // 임시 데이터 가져오기
-import Select from "../boardGame/Select";
-import Input from "../boardGame/Input";
+import Select from "../gamePage/subcomponents/Select";
+import Input from "../gamePage/subcomponents/Input";
 import StoreList from "./StoreList";
 
 // Kakao 객체의 타입 선언

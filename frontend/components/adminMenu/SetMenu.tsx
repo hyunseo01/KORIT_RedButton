@@ -1,15 +1,6 @@
 "use client";
+import { MenuEntity } from "@/types/adminMenu/amindMenuType";
 import React, { useEffect, useState } from "react";
-
-type MenuEntity = {
-  menuno: number;
-  image: string;
-  koname: string;
-  enname: string;
-  info: string;
-  allergy: string;
-  drinktype: string;
-};
 
 const initialForm: Omit<MenuEntity, "menuno"> = {
   image: "",

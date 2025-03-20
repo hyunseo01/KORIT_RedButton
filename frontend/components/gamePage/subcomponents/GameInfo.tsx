@@ -1,13 +1,4 @@
-type BoardGameInfoProps = {
-  KoName: string;
-  EnName: string;
-  Image: string;
-  info1: string;
-  info2: string;
-  Level: string;
-  People: string;
-  RunningTime: string;
-};
+import { GameInfoProps } from "@/types/gameType/gameType";
 
 const GameInfo = ({
   KoName,
@@ -18,7 +9,7 @@ const GameInfo = ({
   Level,
   People,
   RunningTime,
-}: BoardGameInfoProps) => {
+}: GameInfoProps) => {
   return (
     <>
       <section className=" w-screen flex justify-center bg-[#F0EFED] absolute left-0">
