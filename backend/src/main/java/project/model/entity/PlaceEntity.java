@@ -20,7 +20,7 @@ public class PlaceEntity {
     @Column(nullable = false)
     private String name; //지점 이름
     
-    @Column(nullable = false)
+    @Column(nullable = false, length = 512)
     private String image; //url
     
     @Column(nullable = false) 

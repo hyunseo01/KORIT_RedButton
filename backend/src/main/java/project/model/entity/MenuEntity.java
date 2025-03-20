@@ -16,7 +16,7 @@ public class MenuEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int menuno; //pk 메뉴 넘버
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 512)
     private String image; //url
 
     @Column(nullable = false)

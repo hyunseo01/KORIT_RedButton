@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GameInfo from "./subcomponents/GameInfo";
 import clsx from "clsx";
 import BoardGame from "./subcomponents/BoardGame";
@@ -8,6 +8,17 @@ import { BoardData } from "@/data/gameData/GameData";
 
 const GamePageMap = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [gameData, setGameData] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/game/findall.do")
+      .then((r) => r.json())
+      .then((data) => setGameData(data))
+      .catch((e) => {
+        alert("서버 켜라");
+        console.error("Error : ", e);
+      });
+  }, []);
 
   const ClickEvent = (index: number) => {
     setSelectedIndex(selectedIndex === index ? null : index);
@@ -29,7 +40,7 @@ const GamePageMap = () => {
         </span>
       </div>
       <div className="gap-5 mt-[50px] cursor-pointer flex flex-wrap w-full max-w-[1050px] mx-auto row-gap-[74px]">
-        {BoardData.map((v, i) => (
+        {gameData.map((v, i) => (
           <div
             key={i}
             className={clsx("flex flex-col w-[240px]", {
@@ -38,22 +49,23 @@ const GamePageMap = () => {
             })}
           >
             <BoardGame
-              Image={v.Image}
-              KoName={v.KoName}
-              EnName={v.EnName}
+              Image={v.image}
+              KoName={v.koname}
+              EnName={v.enname}
               ClickInfo={() => ClickEvent(i)}
             />
             {selectedIndex === i && (
               <div className="w-full py-[20px] mt-[20px]">
                 <div className="w-screen">
                   <GameInfo
-                    KoName={BoardData[i].KoName}
-                    EnName={BoardData[i].EnName}
-                    Image={BoardData[i].Image}
-                    info={BoardData[i].info}
-                    Level={BoardData[i].Level}
-                    People={BoardData[i].People}
-                    RunningTime={BoardData[i].RunningTime}
+                    KoName={gameData[i].koname}
+                    EnName={gameData[i].enname}
+                    Image={gameData[i].image}
+                    info1={gameData[i].info1}
+                    info2={gameData[i].info2}
+                    Level={gameData[i].level}
+                    People={gameData[i].player}
+                    RunningTime={gameData[i].time}
                   />
                 </div>
               </div>

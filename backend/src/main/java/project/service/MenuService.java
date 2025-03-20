@@ -17,4 +17,19 @@ public class MenuService {
     public List<MenuEntity> findAll() {
         return menuRepository.findAll();
     }
+
+    @Transactional
+    public MenuEntity findById(int id) {
+        return menuRepository.findById(id).orElse(null);
+    }
+
+    @Transactional
+    public MenuEntity save(MenuEntity menu) {
+        return menuRepository.save(menu);
+    }
+
+    @Transactional
+    public void deleteById(int id) {
+        menuRepository.deleteById(id);
+    }
 }

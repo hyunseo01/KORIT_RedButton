@@ -17,4 +17,19 @@ public class GameService {
     public List<GameEntity> findAll() {
         return gameRepository.findAll();
     }
+
+    @Transactional
+    public GameEntity findById(int id) {
+        return gameRepository.findById(id).orElse(null);
+    }
+
+    @Transactional
+    public GameEntity save(GameEntity game) {
+        return gameRepository.save(game);
+    }
+
+    @Transactional
+    public void deleteById(int id) {
+        gameRepository.deleteById(id);
+    }
 }

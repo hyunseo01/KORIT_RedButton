@@ -2,7 +2,8 @@ type BoardGameInfoProps = {
   KoName: string;
   EnName: string;
   Image: string;
-  info: string;
+  info1: string;
+  info2: string;
   Level: string;
   People: string;
   RunningTime: string;
@@ -12,7 +13,8 @@ const GameInfo = ({
   KoName,
   EnName,
   Image,
-  info,
+  info1,
+  info2,
   Level,
   People,
   RunningTime,
@@ -39,7 +41,9 @@ const GameInfo = ({
               </span>
             </div>
             <div className="mt-[20px] pb-[20px] border-b border-b-[#d2d2d2]">
-              <span>{info}</span>
+              <span>{info1}</span>
+              <br />
+              <span>{info2}</span>
             </div>
             <div className="mt-[20px] pb-[20px] border-b border-b-[#d2d2d2]">
               <span className="text-xl mr-[20px] font-bold">
