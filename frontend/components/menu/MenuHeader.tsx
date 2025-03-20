@@ -17,9 +17,9 @@ const MenuHeader = () => {
             "url('https://redbutton.co.kr/wp-content/uploads/2023/12/MENU.jpg')",
         }}
       >
-        <h2 className="text-[#EDECEA] text-[56px] leading-[74px] w-[1194px] h-[74px] flex justify-center transform -translate-x-[100px] translate-y-[60px]">
+        <em className="text-[#EDECEA] text-[56px] leading-[74px] w-[1194px] h-[74px] flex justify-center transform -translate-x-[100px] translate-y-[60px]">
           BEVERAGE
-        </h2>
+        </em>
       </div>
 
       <div className="bg-[#EDECEA] h-[90px] py-[28px]">

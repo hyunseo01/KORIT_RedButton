@@ -25,7 +25,7 @@ const Footer = () => {
         </div>
 
         <div className="text-[#8c8c8c] flex flex-col gap-[10px] justify-center items-center">
-          <span className="text-[30px] mr-[80px]">1644-0641</span>
+          <em className="text-[30px] mr-[80px]">1644-0641</em>
           <div className="flex flex-col text-[16px] text-left">
             <span className="text-left">오전 9시~12시 / 오후 1시~6시</span>
             <span className="text-left">(주말, 공휴일 휴무)</span>

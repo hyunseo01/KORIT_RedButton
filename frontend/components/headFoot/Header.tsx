@@ -43,23 +43,23 @@ const Header = ({ onBrandHover }: { onBrandHover: () => void }) => {
         </Link>
 
         <div
-          className="flex items-center px-[48px] py-0 w-full"
+          className="flex justify-between items-center px-[48px] py-0 w-full"
           onMouseEnter={onBrandHover}
         >
           <div className="flex justify-between w-full">
             {[
               { name: "BRAND", href: "/redbutton/brand" },
-              { name: "BOARD GAME", href: "/redbutton/game" },
+              { name: "BOARDGAME", href: "/redbutton/game" },
               { name: "MENU", href: "/redbutton/menu" },
               { name: "STORE", href: "/redbutton/store" },
               { name: "CONTACT", href: "/redbutton/contact" },
             ].map((item, index) => (
               <Link
                 key={index}
-                className="text-inherit no-underline py-[13px] px-[20px] text-[20px] ml-[10px] first:ml-0"
+                className=" flex-1 py-[13px] px-[20px] text-[20px]"
                 href={item.href}
               >
-                {item.name}
+                <em className="flex justify-center text-center">{item.name}</em>
               </Link>
             ))}
           </div>
