@@ -1,17 +1,9 @@
 import { motion } from "framer-motion";
-import SubsliderText from "../slide/sub/subsliderText";
+import SubsliderText from "./subsliderText";
 
 const Motion = () => {
   return (
-    <div
-      style={{
-        width: "300px",
-        display: "flex",
-        justifyContent: "center",
-        height: "10vh",
-        position: "absolute",
-      }}
-    >
+    <div className="w-[300px] flex justify-center h-[10vh] absolute">
       <motion.div
         initial={{ x: "-300px", opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}

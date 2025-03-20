@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import MenuTitleBox from "./MenuTitleBox";
-import MenuGrid from "./MenuGrid";
-import MenuCard from "./MenuCard";
+import MenuTitleBox from "../headFoot/menu/MenuTitleBox";
+import MenuGrid from "../headFoot/menu/MenuGrid";
+import MenuCard from "../headFoot/menu/MenuCard";
 
 type MenuAllProps = {
   category: "coffee" | "latte" | "tea" | "ade" | "smoothie" | "soda" | null;

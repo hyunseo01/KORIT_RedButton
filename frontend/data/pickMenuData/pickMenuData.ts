@@ -1,8 +1,3 @@
-type PickMenuProps = {
-  image: string;
-  KoName: string;
-  EnName: string;
-};
 export const PickMenuArr = [
   {
     image:
@@ -29,30 +24,3 @@ export const PickMenuArr = [
     EnName: "Snowing Supreme Boneless Chicken",
   },
 ];
-
-const PickMenu = ({ image, KoName, EnName }: PickMenuProps) => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <img
-        style={{ width: "240px", height: "270px", backgroundColor: "#EDECEA" }}
-        src={image}
-        alt=""
-      />
-      <span
-        style={{ fontSize: "20px", marginTop: "20px", fontWeight: "700  " }}
-      >
-        {KoName}
-      </span>
-      <span style={{ fontSize: "17px" }}>{EnName}</span>
-    </div>
-  );
-};
-
-export default PickMenu;
