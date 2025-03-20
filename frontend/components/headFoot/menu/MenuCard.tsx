@@ -1,12 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
-import PickMenu from "../pick/subcomponents/PickMenu";
+import PickMenu from "@/components/main/pick/subcomponents/PickMenu";
 
 type MenuCardProps = {
   image: string;
   nameKo: string;
   nameEN: string;
-  onclick?: () => void;
+  onclick: () => void;
 };
 
 const MenuCard = ({ image, nameKo, nameEN, onclick }: MenuCardProps) => {

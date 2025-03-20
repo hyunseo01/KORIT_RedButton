@@ -1,5 +1,4 @@
 "use client";
-
 import Input from "@/components/boardGame/Input";
 import Select from "@/components/boardGame/Select";
 import BoardGameInfo from "@/components/gameInfo/gameInfo";
@@ -89,7 +88,14 @@ const page = () => {
         </div>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          padding: "84px 0px 160px 0px",
+          backgroundColor: "#F8F7F5",
+        }}
+      >
         <div
           style={{
             gap: "20px",

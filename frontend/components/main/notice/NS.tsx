@@ -3,15 +3,11 @@ import Notice from "./subNotice/Notice";
 
 const NS = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-      }}
-    >
-      <div style={{ width: "50%" }}>
+    <div className="flex">
+      <div className="w-1/2">
         <Notice />
       </div>
-      <div style={{ width: "50%" }}>
+      <div className="w-1/2">
         <GameSearch />
       </div>
     </div>

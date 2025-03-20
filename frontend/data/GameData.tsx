@@ -117,11 +117,7 @@ const BoardGame = ({ KoName, EnName, Image, ClickInfo }: BoardGameProps) => {
         alignItems: "center",
       }}
     >
-      <img
-        style={{ width: "240px", height: "270px", backgroundColor: "#EDECEA" }}
-        src={Image}
-        alt=""
-      />
+      <img style={{ width: "240px", height: "270px" }} src={Image} alt="" />
       <span
         style={{ fontSize: "20px", marginTop: "20px", fontWeight: "700  " }}
       >

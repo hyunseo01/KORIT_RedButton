@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
-import { store } from "@/data/mapData"; // 임시 데이터 가져오기
+import { store } from "@/data/mapData/mapData"; // 임시 데이터 가져오기
 import Select from "../boardGame/Select";
 import Input from "../boardGame/Input";
 import StoreList from "./StoreList";
