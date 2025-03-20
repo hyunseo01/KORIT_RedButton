@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Header from "./Header";
-import HeaderMenu from "./HeaderMenu9(삭제가능)";
+// import HeaderMenu from "./HeaderMenu9(삭제가능)";
 import HeaderMenu2 from "./HeaderMenu2";
 
 const HeaderFinal = () => {

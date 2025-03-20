@@ -7,7 +7,8 @@ type BoardGameInfoProps = {
   People: string;
   RunningTime: string;
 };
-const BoardGameInfo = ({
+
+const GameInfo = ({
   KoName,
   EnName,
   Image,
@@ -41,9 +42,15 @@ const BoardGameInfo = ({
               <span>{info}</span>
             </div>
             <div className="mt-[20px] pb-[20px] border-b border-b-[#d2d2d2]">
-              <span className="text-xl mr-[20px] font-bold">{Level}</span>
-              <span className="text-xl mr-[20px] font-bold">{People}</span>
-              <span className="text-xl mr-[20px] font-bold">{RunningTime}</span>
+              <span className="text-xl mr-[20px] font-bold">
+                난이도 :{Level}
+              </span>
+              <span className="text-xl mr-[20px] font-bold">
+                인원 :{People}
+              </span>
+              <span className="text-xl mr-[20px] font-bold">
+                게임시간 :{RunningTime}
+              </span>
             </div>
           </div>
         </div>
@@ -51,4 +58,4 @@ const BoardGameInfo = ({
     </>
   );
 };
-export default BoardGameInfo;
+export default GameInfo;

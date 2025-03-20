@@ -1,5 +1,4 @@
 import React from "react";
-import { SlMagnifier } from "react-icons/sl";
 
 type InputProps = {
   width: number;
