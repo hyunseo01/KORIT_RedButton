@@ -8,7 +8,7 @@ const page = () => {
     <div>
       <GamePageImage />
       <GamePageNav />
-      <GamePageSearch />
+
       <GamePageMap />
     </div>
   );

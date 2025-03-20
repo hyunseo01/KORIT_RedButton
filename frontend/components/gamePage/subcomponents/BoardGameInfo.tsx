@@ -1,3 +1,5 @@
+import { div } from "motion/react-client";
+
 const BoardGameInfo = () => {
   return (
     <section style={{ backgroundColor: "#F0EFED", width: "100vw" }}>

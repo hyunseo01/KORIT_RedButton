@@ -5,9 +5,10 @@ type InputProps = {
   height: number;
   title: string;
   placeholder: string;
+  onChange: (e: string) => void; // onChange 타입 정의
 };
 
-const Input = ({ width, height, title, placeholder }: InputProps) => {
+const Input = ({ width, height, title, placeholder, onChange }: InputProps) => {
   return (
     <>
       <span style={{ color: "#7b5c40", fontWeight: "700", fontSize: "16px" }}>
@@ -32,6 +33,7 @@ const Input = ({ width, height, title, placeholder }: InputProps) => {
         }}
         type="text"
         placeholder={placeholder}
+        onChange={(e) => onChange(e.target.value)} // 문자열 값만 전달하도록 수정
       />
     </>
   );
