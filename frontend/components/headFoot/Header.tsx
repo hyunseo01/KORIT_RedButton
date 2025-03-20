@@ -32,162 +32,64 @@ const Header = ({ onBrandHover }: { onBrandHover: () => void }) => {
   }, [isLangMenuOpen]);
 
   return (
-    <header style={{ backgroundColor: "#272422" }}>
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          maxWidth: "1200px",
-          color: "#EDECEA",
-          flexDirection: "row",
-          margin: "0 auto",
-          padding: "25px 0",
-          justifyContent: "space-between",
-          position: "relative",
-          // zIndex: 1,
-        }}
-      >
+    <header className="bg-[#272422]">
+      <div className="flex w-full max-w-[1200px] text-[#EDECEA] mx-auto py-[25px] justify-between relative items-center">
         <Link href={"/"}>
           <img
-            style={{ width: "90px" }}
+            className="w-[90px]"
             src="https://redbutton.co.kr/wp-content/uploads/2021/03/GNB_logo.png"
             alt="Logo"
           />
         </Link>
 
         <div
-          style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            padding: "0px 20px 0px 48px",
-          }}
+          className="flex justify-between items-center px-[48px] py-0 w-full"
           onMouseEnter={onBrandHover}
         >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              width: "100%",
-            }}
-          >
+          <div className="flex justify-between w-full">
             {[
               { name: "BRAND", href: "/redbutton/brand" },
-              { name: "BOARD GAME", href: "/redbutton/game" },
+              { name: "BOARDGAME", href: "/redbutton/game" },
               { name: "MENU", href: "/redbutton/menu" },
               { name: "STORE", href: "/redbutton/store" },
               { name: "CONTACT", href: "/redbutton/contact" },
             ].map((item, index) => (
               <Link
                 key={index}
-                style={{
-                  color: "inherit",
-                  textDecoration: "none",
-                  padding: "13px 20px",
-                  fontSize: "20px",
-                  marginLeft: index === 0 ? "0px" : "10px",
-                }}
+                className=" flex-1 py-[13px] px-[20px] text-[20px]"
                 href={item.href}
               >
-                {item.name}
+                <em className="flex justify-center text-center">{item.name}</em>
               </Link>
             ))}
           </div>
         </div>
 
         <div
-          style={{
-            display: "flex",
-            gap: "10px",
-            alignItems: "center",
-            position: "relative",
-            margin: 0, // KOR/ENG 버튼 외부 여백 없애기
-          }}
+          className="flex gap-[10px] items-center relative"
           ref={langMenuRef}
         >
-          <div
-            style={{
-              width: "121px",
-              height: "32px",
-              fontSize: "16px",
-              letterSpacing: "-1.2px",
-              backgroundColor: "#605549",
-              padding: "7px 20px 9px 17px",
-              color: "#ffffff",
-              borderRadius: "4px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              whiteSpace: "nowrap", //줄바꿈되지않는머시기
-            }}
-          >
+          <div className="w-[121px] h-[32px] text-[16px] tracking-[-1.2px] bg-[#605549] py-[7px] px-[17px] rounded-[4px] flex items-center justify-center text-center whitespace-nowrap">
             가맹사업 안내
           </div>
 
           <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              cursor: "pointer",
-              position: "relative",
-              margin: 0, // KOR/ENG 버튼 외부 여백 없애기
-            }}
+            className="flex items-center cursor-pointer relative"
             onClick={toggleLangMenu}
           >
-            <div
-              style={{
-                width: "72px",
-                height: "32px",
-                backgroundColor: "#4c4c4c",
-                padding: "7px 10px 9px 10px",
-                borderRadius: "5px",
-                color: "#ffffff",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                // gap: "5px", // ENG와 KOR 버튼 간의 빈틈을 없앴습니다.
-                margin: 0, // 바깥 여백을 제거
-              }}
-            >
+            <div className="w-[72px] h-[32px] bg-[#4c4c4c] py-[7px] px-[10px] rounded-[5px] text-[#ffffff] flex items-center justify-center">
               KOR
               <IoIosArrowDown
-                style={{
-                  fontSize: "20px",
-                  transition: "transform 0.3s",
-                  transform: isLangMenuOpen ? "rotate(180deg)" : "rotate(0deg)",
-                }}
+                className={`text-[20px] transition-transform duration-300 transform ${
+                  isLangMenuOpen ? "rotate-180" : "rotate-0"
+                }`}
               />
             </div>
 
             {isLangMenuOpen && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: "100%",
-                  left: "0",
-                  width: "100%", // 드롭다운 메뉴의 너비를 100%로 설정하여 버튼과 동일하게 맞춤
-                  backgroundColor: "#4c4c4c",
-                  color: "#ffffff",
-                  borderRadius: "5px",
-                  boxShadow: "0px 4px 6px rgba(0,0,0,0.1)",
-                  zIndex: 10,
-                }}
-              >
-                <ul
-                  style={{
-                    listStyle: "none",
-
-                    margin: 0,
-                  }}
-                >
-                  <li
-                    style={{
-                      padding: "2px 7.5px 4.5px",
-                      cursor: "pointer",
-                      textAlign: "center",
-                    }}
-                  >
+              <div className="absolute top-full left-0 w-full bg-[#4c4c4c] text-[#ffffff] rounded-[5px] shadow-md z-10">
+                <ul className="list-none m-0">
+                  <li className="py-[2px] px-[7.5px] cursor-pointer text-center">
                     ENG
                   </li>
                 </ul>
