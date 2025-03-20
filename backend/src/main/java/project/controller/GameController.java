@@ -30,6 +30,7 @@ public class GameController {
         return gameService.save(game);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/update/{id}")
     public GameEntity update(@PathVariable int id, @RequestBody GameEntity game) {
         GameEntity existingGame = gameService.findById(id);

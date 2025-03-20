@@ -16,6 +16,7 @@ public class PlaceService {
     @Transactional
     public List<PlaceEntity> findAll() {
         return placeRepository.findAll();
+
     }
 
     @Transactional

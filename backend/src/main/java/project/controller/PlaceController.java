@@ -30,6 +30,7 @@ public class PlaceController {
         return placeService.save(place);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/update/{id}")
     public PlaceEntity update(@PathVariable int id, @RequestBody PlaceEntity place) {
         PlaceEntity existingPlace = placeService.findById(id);

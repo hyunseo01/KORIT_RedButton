@@ -33,7 +33,6 @@ export default function RootLayout({
       >
         <HeaderFinal />
         <StickyButton></StickyButton>
-        <MenuHeader></MenuHeader>
         {children}
         <Footer />
       </body>

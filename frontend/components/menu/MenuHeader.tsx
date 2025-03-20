@@ -1,12 +1,26 @@
 "use client";
-import { useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 
 const MenuHeader = () => {
-  const [selectedMenu, setSelectedMenu] = useState<string>("전체메뉴");
+  const router = useRouter();
+  const pathname = usePathname();
 
-  const handleClick = (menu: string) => {
-    setSelectedMenu(menu);
+  const getCategoryFromPath = () => {
+    const paths = pathname.split("/");
+    return paths[paths.length - 1] || "전체메뉴";
   };
+
+  const selectedMenu = getCategoryFromPath();
+
+  const menuList = [
+    { name: "전체메뉴", path: "/redbutton/menu/drink" },
+    { name: "커피", path: "/redbutton/menu/drink/coffee" },
+    { name: "라떼", path: "/redbutton/menu/drink/latte" },
+    { name: "티", path: "/redbutton/menu/drink/tea" },
+    { name: "에이드", path: "/redbutton/menu/drink/ade" },
+    { name: "쉐이크,스무디", path: "/redbutton/menu/drink/smoothie" },
+    { name: "소다", path: "/redbutton/menu/drink/soda" },
+  ];
 
   return (
     <div>
@@ -17,30 +31,24 @@ const MenuHeader = () => {
             "url('https://redbutton.co.kr/wp-content/uploads/2023/12/MENU.jpg')",
         }}
       >
-        <em className="text-[#EDECEA] text-[56px] leading-[74px] w-[1194px] h-[74px] flex justify-center transform -translate-x-[100px] translate-y-[60px]">
+        <em className="text-[#EDECEA] text-[56px] leading-[74px] flex justify-center transform -translate-x-[100px] translate-y-[60px]">
           BEVERAGE
         </em>
       </div>
 
       <div className="bg-[#EDECEA] h-[90px] py-[28px]">
         <div className="flex gap-[20px] justify-center items-center pt-[5px] text-[18px]">
-          {[
-            "전체메뉴",
-            "커피",
-            "라떼",
-            "티",
-            "에이드",
-            "쉐이크,스무디",
-            "소다",
-          ].map((menu) => (
+          {menuList.map((menu) => (
             <span
-              key={menu}
-              onClick={() => handleClick(menu)}
+              key={menu.name}
+              onClick={() => router.push(menu.path)}
               className={`cursor-pointer ${
-                selectedMenu === menu ? "text-[#7b5c40]" : "text-[#979797]"
-              } ${menu === "전체메뉴" ? "underline" : ""}`}
+                pathname.includes(menu.path)
+                  ? "text-[#7b5c40] underline"
+                  : "text-[#979797]"
+              }`}
             >
-              {menu}
+              {menu.name}
             </span>
           ))}
         </div>

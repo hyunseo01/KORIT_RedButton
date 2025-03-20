@@ -30,38 +30,65 @@ const HeaderSub = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isLangMenuOpen]);
+
   return (
     <header className="absolute w-full h-[200px] bg-[#332f2d] z-30">
-      <div className=" flex w-full h-full text-[#EDECEA] py-[25px] justify-between items-center max-w-[1200px] mx-auto">
-        <div
-          className="flex items-center px-[48px] py-0 w-full h-full"
-          //   onMouseEnter={onBrandHover}
-        >
-          <table className="flex w-full h-full">
-            {HeaderSubData.map((v, i) => (
-              <Link className=" " key={i} href={v.href}>
-                <tr
-                  className="flex flex-col ml-24 w-full h-full"
-                  style={{ border: "1px solid red" }}
-                >
-                  {v.list?.map((v) => (
-                    <td className=" text-[14px] text-start">{v}</td>
-                  ))}
-                </tr>
-              </Link>
+      <div className="flex w-full h-full text-[#EDECEA] py-[25px] justify-between items-center max-w-[1120px] mx-auto relative left-[-20px]">
+        <div className="flex items-center px-[48px] py-0 w-full h-full">
+          <div className="flex w-full h-full justify-start">
+            {HeaderSubData.map((menu, index) => (
+              <div
+                key={index}
+                className={`flex flex-col whitespace-nowrap ${
+                  index === 0
+                    ? "ml-24"
+                    : index === 1
+                    ? "ml-5"
+                    : index === 2
+                    ? "ml-24"
+                    : index === 3
+                    ? "ml-26"
+                    : index === 4
+                    ? "ml-23"
+                    : "ml-24"
+                }`}
+              >
+                <div className="flex flex-col gap-[10px]">
+                  {menu.list?.map((item, subIndex) => {
+                    let itemHref = menu.href;
+
+                    if (menu.name === "MENU") {
+                      if (item === "음료") itemHref = "/redbutton/menu/drink";
+                      if (item === "스낵/푸드")
+                        itemHref = "/redbutton/menu/snack";
+                      if (item === "세트메뉴") itemHref = "/redbutton/menu/set";
+                    }
+
+                    return (
+                      <Link
+                        key={subIndex}
+                        href={itemHref}
+                        className="text-[14px] text-[#EDECEA] hover:underline"
+                      >
+                        {item}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
             ))}
-          </table>
+          </div>
         </div>
 
         <div
-          className="w-[255px] h-[168px] flex gap-[10px] relative justify-end items-start "
+          className="w-[255px] h-[168px] flex gap-[10px] relative justify-end items-start"
           ref={langMenuRef}
         >
           <div
             className="flex items-center cursor-pointer relative justify-end"
             onClick={toggleLangMenu}
           >
-            <div className=" flex flex-row gap-[10px] ">
+            <div className="flex flex-row gap-[10px]">
               <img
                 className="w-[32px] h-[32px]"
                 src="https://redbutton.co.kr/wp-content/uploads/2023/08/GNB_facebook.png"
@@ -74,6 +101,7 @@ const HeaderSub = () => {
               />
             </div>
           </div>
+          <div style={{ width: "200px" }}></div>
         </div>
       </div>
     </header>
