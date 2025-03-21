@@ -1,11 +1,4 @@
-type MenuInfoProps = {
-  koname: string;
-  enname: string;
-  image: string;
-  info: string;
-  allergy: string;
-  onClose: () => void;
-};
+import { MenuInfoProps } from "@/types/menuType/menuType";
 
 export default function MenuInfo({
   koname,

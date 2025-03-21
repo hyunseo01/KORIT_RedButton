@@ -12,7 +12,7 @@ export const HeaderSubData: HeaderSubItem[] = [
   },
   {
     name: "BOARD GAME",
-    href: "/redbutton/game",
+    href: "/redbutton/gameSearch",
     list: ["레드버튼 전용 앱", "보드게임 찾기"],
   },
   {

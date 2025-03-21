@@ -41,16 +41,16 @@ const HeaderSub = () => {
                 key={index}
                 className={`flex flex-col whitespace-nowrap ${
                   index === 0
-                    ? "ml-24"
+                    ? "ml-31"
                     : index === 1
-                    ? "ml-5"
+                    ? "ml-7"
                     : index === 2
-                    ? "ml-24"
+                    ? "ml-34"
                     : index === 3
-                    ? "ml-26"
+                    ? "ml-33"
                     : index === 4
-                    ? "ml-23"
-                    : "ml-24"
+                    ? "ml-31"
+                    : "ml-20"
                 }`}
               >
                 <div className="flex flex-col gap-[10px]">
@@ -88,7 +88,7 @@ const HeaderSub = () => {
             className="flex items-center cursor-pointer relative justify-end"
             onClick={toggleLangMenu}
           >
-            <div className="flex flex-row gap-[10px]">
+            <div className="flex flex-row gap-[10px] ml-[50px]">
               <img
                 className="w-[32px] h-[32px]"
                 src="https://redbutton.co.kr/wp-content/uploads/2023/08/GNB_facebook.png"

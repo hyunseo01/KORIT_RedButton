@@ -1,9 +1,4 @@
-type BoardGameProps = {
-  KoName: string;
-  EnName: string;
-  Image: string;
-  ClickInfo: () => void;
-};
+import { BoardGameProps } from "@/types/gameType/gameType";
 
 const BoardGame = ({ KoName, EnName, Image, ClickInfo }: BoardGameProps) => {
   return (

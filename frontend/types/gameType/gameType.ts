@@ -8,6 +8,13 @@ export type Game = {
   player: string;
   time: string;
 };
+export type BoardGameProps = {
+  KoName: string;
+  EnName: string;
+  Image: string;
+  ClickInfo: () => void;
+};
+
 export type GameInfoProps = {
   KoName: string;
   EnName: string;
@@ -29,6 +36,7 @@ export type InputProps = {
   height: number;
   title: string;
   placeholder: string;
+  onChange: (e: string) => void;
 };
 export type BoardGameInfoProps = {
   KoName: string;
@@ -38,4 +46,7 @@ export type BoardGameInfoProps = {
   Level: string;
   People: string;
   RunningTime: string;
+};
+export type GamePageSearchProps = {
+  onSearch: (searchTerm: string) => void;
 };
