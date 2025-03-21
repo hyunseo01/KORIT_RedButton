@@ -63,7 +63,8 @@ const MobileGamePageMap = () => {
                       KoName={BoardData[i].KoName}
                       EnName={BoardData[i].EnName}
                       Image={BoardData[i].Image}
-                      info={BoardData[i].info}
+                      info1={BoardData[i].info}
+                      info2={BoardData[i].info}
                       Level={BoardData[i].Level}
                       People={BoardData[i].People}
                       RunningTime={BoardData[i].RunningTime}
