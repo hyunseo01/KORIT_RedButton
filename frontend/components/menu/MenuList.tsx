@@ -50,13 +50,13 @@ export default function MenuList({ category, type }: Props) {
   }
 
   return (
-    <div className="max-w-[1050px] mx-auto py-20 space-y-[74px]">
+    <div className="max-w-[1050px] mx-auto py-20 space-y-[74px] ">
       {rows.map((row, rowIdx) => {
         const rowStart = rowIdx * 4;
         return (
           <div key={rowIdx}>
             {/* 메뉴 카드 (한 줄에 4개) */}
-            <div className="grid grid-cols-4 gap-x-5">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5">
               {row.map((item, idx) => {
                 const globalIdx = rowStart + idx;
                 return (

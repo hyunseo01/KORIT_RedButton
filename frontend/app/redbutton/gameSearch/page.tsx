@@ -11,7 +11,7 @@ const Page = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 767);
+      setIsMobile(window.innerWidth <= 1000);
     };
 
     handleResize();
@@ -22,9 +22,15 @@ const Page = () => {
 
   return (
     <div>
-      <GamePageImage />
-      <GamePageNav />
-      {isMobile ? <MobileGamePageMap /> : <GamePageMap />}
+      {isMobile ? (
+        <MobileGamePageMap />
+      ) : (
+        <>
+          <GamePageImage />
+          <GamePageNav />
+          <GamePageMap />
+        </>
+      )}
     </div>
   );
 };

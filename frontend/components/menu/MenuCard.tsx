@@ -1,4 +1,5 @@
 import PickMenu from "@/components/main/pick/subcomponents/PickMenu";
+import { div } from "motion/react-client";
 
 type MenuCardProps = {
   image: string;
@@ -14,8 +15,10 @@ export default function MenuCard({
   onClick,
 }: MenuCardProps) {
   return (
-    <div onClick={onClick} className="cursor-pointer w-[240px]">
-      <PickMenu image={image} KoName={nameKo} EnName={nameEN} />
+    <div className="flex items-center justify-center">
+      <div onClick={onClick} className="cursor-pointer w-[240px]">
+        <PickMenu image={image} KoName={nameKo} EnName={nameEN} />
+      </div>
     </div>
   );
 }

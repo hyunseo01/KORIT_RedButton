@@ -12,7 +12,7 @@ const MobileGamePageSearch = ({ onSearch }: MobileGamePageSearchProps) => {
   };
   return (
     <div className="bg-[#EDECEA]">
-      <div className="flex flex-col justify-center items-center gap-4 py-[40px] ">
+      <div className="flex flex-col flex-1 justify-center items-center gap-4 py-[40px] ">
         <div className="flex items-center gap-2">
           <Input
             width={400}

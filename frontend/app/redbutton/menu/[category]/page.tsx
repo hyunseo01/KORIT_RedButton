@@ -7,6 +7,6 @@ import CategoryPage from "@/components/menu/CategoryPage";
 export default function MenuCategoryPage() {
   const { category } = useParams() as { category: string };
 
-  if (category === "drink") return <DrinkPage />;
+  if (category == "drink") return <DrinkPage />;
   return <CategoryPage category={category as "snack" | "set"} />;
 }
