@@ -2,22 +2,18 @@
 
 import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
-import { store } from "@/data/mapData/mapData"; // 임시 데이터 가져오기
 import Select from "../gamePage/subcomponents/Select";
 import Input from "../gamePage/subcomponents/Input";
 import StoreList from "./StoreList";
 
-// Kakao 객체의 타입 선언
 declare global {
   interface Window {
     kakao: any;
   }
 }
 
-// 🔴 API 키 하드코딩 (운영에서는 .env 사용 추천)
-const KAKAO_MAP_API_KEY = "84896ad61f8cfbdb4cd0eebe1eeb1f14"; // JavaScript 키
+const KAKAO_MAP_API_KEY = "84896ad61f8cfbdb4cd0eebe1eeb1f14";
 
-// PlaceEntity와 동일한 데이터 타입
 interface PlaceData {
   placeno: number;
   name: string;
@@ -33,179 +29,133 @@ interface PlaceData {
 const KakaoMap = () => {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [places, setPlaces] = useState<PlaceData[]>(store); // 임시 데이터 사용
-  const [visiblePlaces, setVisiblePlaces] = useState<PlaceData[]>([]); // 현재 지도에서 보이는 마커 리스트
+  const [places, setPlaces] = useState<PlaceData[]>([]);
+  const [visiblePlaces, setVisiblePlaces] = useState<PlaceData[]>([]);
   const [map, setMap] = useState<any>(null);
-  const markerListRef = useRef<any[]>([]); // 마커 리스트 저장
+  const markerListRef = useRef<{ marker: any; data: PlaceData }[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch("http://localhost:8080/place/findall.do");
+        const data = await res.json();
+        setPlaces(data);
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  }, []);
 
   const initMap = () => {
-    if (typeof window === "undefined" || !window.kakao) {
-      console.error("Kakao Maps API가 로드되지 않았습니다.");
-      return;
-    }
-    if (!mapContainerRef.current) return;
-
-    const mapOption = {
-      center: new window.kakao.maps.LatLng(37.5235531064681, 126.980329796658), // 기본 지도 중심
+    if (!window.kakao || !mapContainerRef.current) return;
+    const kakaoMap = new window.kakao.maps.Map(mapContainerRef.current, {
+      center: new window.kakao.maps.LatLng(37.5235531, 126.9803298),
       level: 9,
-    };
-    const newMap = new window.kakao.maps.Map(
-      mapContainerRef.current,
-      mapOption
-    );
-    setMap(newMap);
+    });
+    setMap(kakaoMap);
 
-    // 클러스터러 생성
     const clusterer = new window.kakao.maps.MarkerClusterer({
-      map: newMap,
-      averageCenter: true, // 클러스터 중앙 좌표 설정
-      minLevel: 5, // 줌 레벨이 5 이상일 때 클러스터링
+      map: kakaoMap,
+      averageCenter: true,
+      minLevel: 5,
       styles: [
         {
           width: "36px",
-          height: "112px", // 높이 2배
+          height: "112px",
           background: `url('https://redbutton.co.kr/wp-content/uploads/2021/04/redbutton_markers.png') no-repeat center`,
           backgroundSize: "contain",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: "#000", // 글자색 검정
           fontSize: "14px",
           fontWeight: "bold",
+          color: "#000",
           textAlign: "center",
           lineHeight: "30px",
         },
       ],
     });
 
-    // 마커 추가
-    const markerList = places.map((place) => {
+    const markerImage = new window.kakao.maps.MarkerImage(
+      "https://redbutton.co.kr/wp-content/uploads/2021/04/redbutton_marker.png",
+      new window.kakao.maps.Size(36, 50),
+      { offset: new window.kakao.maps.Point(20, 40) }
+    );
+
+    const markers = places.map((place) => {
       const position = new window.kakao.maps.LatLng(
         parseFloat(place.latitude),
         parseFloat(place.longitude)
       );
-
-      const markerInstance = new window.kakao.maps.Marker({
+      const marker = new window.kakao.maps.Marker({
         position,
-        image: new window.kakao.maps.MarkerImage(
-          "https://redbutton.co.kr/wp-content/uploads/2021/04/redbutton_marker.png",
-          new window.kakao.maps.Size(36, 50), // 크기 (클러스터와 동일)
-          { offset: new window.kakao.maps.Point(20, 40) }
-        ),
+        image: markerImage,
       });
-
-      // 마커 클릭 시 확대 및 이동
-      window.kakao.maps.event.addListener(markerInstance, "click", () => {
-        newMap.setLevel(3); // 확대
-        newMap.setCenter(position); // 클릭한 마커로 중심 이동
+      window.kakao.maps.event.addListener(marker, "click", () => {
+        kakaoMap.setLevel(3);
+        kakaoMap.setCenter(position);
       });
-
-      return { marker: markerInstance, data: place };
+      return { marker, data: place };
     });
 
-    markerListRef.current = markerList; // 마커 리스트 저장
-    clusterer.addMarkers(markerList.map((item) => item.marker));
+    markerListRef.current = markers;
+    clusterer.addMarkers(markers.map((m) => m.marker));
 
-    // 지도 이동/줌 변경 시 보이는 마커 업데이트
-    window.kakao.maps.event.addListener(newMap, "idle", () => {
-      updateVisibleMarkers(newMap);
+    window.kakao.maps.event.addListener(kakaoMap, "idle", () => {
+      const bounds = kakaoMap.getBounds();
+      const visible = markers
+        .filter(({ marker }) => bounds.contain(marker.getPosition()))
+        .map(({ data }) => data);
+      setVisiblePlaces(visible);
     });
-
-    // 초기 마커 필터링
-    updateVisibleMarkers(newMap);
-  };
-
-  // 현재 지도에서 보이는 마커 필터링
-  const updateVisibleMarkers = (currentMap: any) => {
-    const bounds = currentMap.getBounds();
-    const visible = markerListRef.current
-      .filter(({ marker }) => bounds.contain(marker.getPosition()))
-      .map(({ data }) => data);
-
-    setVisiblePlaces(visible);
-  };
-
-  // 리스트 클릭 시 해당 지점으로 이동
-  const moveToLocation = (latitude: string, longitude: string) => {
-    if (map) {
-      const position = new window.kakao.maps.LatLng(
-        parseFloat(latitude),
-        parseFloat(longitude)
-      );
-      map.setLevel(3); // 확대
-      map.setCenter(position); // 클릭한 마커로 이동
-    }
   };
 
   useEffect(() => {
-    if (isLoaded && window.kakao && window.kakao.maps) {
-      window.kakao.maps.load(initMap);
-    }
+    if (isLoaded && places.length) window.kakao.maps.load(initMap);
   }, [isLoaded, places]);
 
+  const moveToLocation = (lat: string, lng: string) => {
+    if (!map) return;
+    const pos = new window.kakao.maps.LatLng(parseFloat(lat), parseFloat(lng));
+    map.setLevel(3);
+    map.setCenter(pos);
+  };
+
   return (
-    <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto" }}>
-      {/* 카카오맵 API 스크립트 */}
+    <div className="w-full max-w-[1200px] mx-auto">
       <Script
         src={`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP_API_KEY}&libraries=clusterer&autoload=false`}
         strategy="afterInteractive"
         onLoad={() => setIsLoaded(true)}
-        onError={(e) => console.error("카카오맵 스크립트 로드 실패", e)}
+        onError={(e) => console.error(e)}
       />
 
-      <div style={{ display: "flex" }}>
-        {/* 지도 컨테이너 */}
+      <div className="flex">
+        <div ref={mapContainerRef} className="w-[70%] h-[580px]" />
         <div
-          ref={mapContainerRef}
-          style={{ width: "70%", height: "580px" }}
-        ></div>
-        <div
+          className="w-[30%] h-[580px] flex flex-col items-center justify-center gap-5 bg-cover bg-center"
           style={{
             backgroundImage:
               "url('https://redbutton.co.kr/wp-content/uploads/2021/04/FIND-REDBUTTON.jpg')",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            width: "30%",
-            height: "580px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "20px",
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-            <Select width={233} height={44} title="지역으로 검색하기" />
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-            <Input
-              width={233}
-              height={44}
-              title="매장명으로 검색하기"
-              placeholder="매장명으로 검색하기"
-            />
-          </div>
+          <Select width={233} height={44} title="지역으로 검색하기" />
+          <Input
+            width={233}
+            height={44}
+            title="매장명으로 검색하기"
+            placeholder="매장명으로 검색하기"
+          />
         </div>
-
-        {/* 현재 지도에서 보이는 지점 리스트 */}
       </div>
-      <div
-        style={{
-          width: "100%",
-          overflowY: "auto",
-          border: "1px solid #ccc",
-        }}
-      >
+
+      <div className="w-full border border-gray-300 mt-4">
         <ul>
           {visiblePlaces.map((v) => (
             <li
+              key={v.placeno}
               onClick={() => moveToLocation(v.latitude, v.longitude)}
-              style={{
-                marginBottom: "10px",
-                cursor: "pointer",
-                padding: "5px",
-                borderBottom: "1px solid #ddd",
-              }}
+              className="cursor-pointer p-2 border-b border-gray-200 hover:bg-gray-50"
             >
               <StoreList
                 storeName={v.name}

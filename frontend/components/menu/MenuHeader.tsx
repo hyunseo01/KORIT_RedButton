@@ -10,7 +10,7 @@ const MenuHeader = () => {
     return paths[paths.length - 1] || "전체메뉴";
   };
 
-  const selectedMenu = getCategoryFromPath();
+  // const selectedMenu = getCategoryFromPath(); // 사용되지 않음
 
   const menuList = [
     { name: "전체메뉴", path: "/redbutton/menu/drink" },

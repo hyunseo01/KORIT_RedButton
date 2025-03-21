@@ -5,7 +5,17 @@ import { useParams } from "next/navigation";
 import MenuCard from "@/components/menu/MenuCard";
 import MenuInfo from "@/components/menu/subcomponents/MenuInfo";
 
-const typeToKorean = {
+interface MenuItem {
+  menuno: number;
+  image: string;
+  koname: string;
+  enname: string;
+  drinktype: string;
+  info: string; // 추가된 속성
+  allergy: string; // 추가된 속성
+}
+
+const typeToKorean: { [key: string]: string } = {
   coffee: "커피",
   latte: "라떼",
   tea: "티",
@@ -16,7 +26,7 @@ const typeToKorean = {
 
 export default function TypePage() {
   const { type } = useParams() as { type: string };
-  const [items, setItems] = useState<any[]>([]);
+  const [items, setItems] = useState<MenuItem[]>([]);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   useEffect(() => {
@@ -26,10 +36,12 @@ export default function TypePage() {
       .catch(() => alert("서버 켜주세요"));
   }, []);
 
-  const filtered = items.filter((i) => i.drinktype === typeToKorean[type]);
+  const filtered = items.filter(
+    (i) => i.drinktype === typeToKorean[type as keyof typeof typeToKorean]
+  );
 
   // 4개씩 묶어서 row 배열 생성
-  const rows: any[][] = [];
+  const rows: MenuItem[][] = [];
   for (let i = 0; i < filtered.length; i += 4) {
     rows.push(filtered.slice(i, i + 4));
   }

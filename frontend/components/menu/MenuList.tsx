@@ -9,6 +9,14 @@ type Props = {
   type?: string; // "coffee", "latte" 등 (음료에서 사용)
 };
 
+interface MenuItem {
+  menuno: number;
+  image: string;
+  koname: string;
+  enname: string;
+  drinktype: string;
+}
+
 const typeToKorean = {
   coffee: "커피",
   latte: "라떼",
@@ -19,7 +27,7 @@ const typeToKorean = {
 };
 
 export default function MenuList({ category, type }: Props) {
-  const [items, setItems] = useState<any[]>([]);
+  const [items, setItems] = useState<MenuItem[]>([]);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   useEffect(() => {
@@ -36,7 +44,7 @@ export default function MenuList({ category, type }: Props) {
       ? items.filter((i) => i.drinktype === category)
       : items;
 
-  const rows: any[][] = [];
+  const rows: MenuItem[][] = [];
   for (let i = 0; i < filtered.length; i += 4) {
     rows.push(filtered.slice(i, i + 4));
   }
