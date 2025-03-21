@@ -42,7 +42,7 @@ const HeaderResponsive = () => {
           </div>
         </div>
       </header>
-      {isOpenSide ? <HeaderSubResponsive2 /> : undefined}
+      {isOpenSide && <HeaderSubResponsive2 />}
     </>
   );
 };
