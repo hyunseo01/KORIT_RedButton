@@ -49,7 +49,7 @@ const HeaderMenu2 = () => {
             }}
           >
             <span>레드버튼 전용 앱</span>
-            <Link href={"/redbutton/gameSearch"}>보드게임 찾기</Link>
+            <Link href={"/redbutton/mobileGameSearch"}>보드게임 찾기</Link>
           </div>
           <div
             style={{
