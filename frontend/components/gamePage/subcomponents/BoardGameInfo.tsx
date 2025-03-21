@@ -1,6 +1,14 @@
-import { div } from "motion/react-client";
+import { BoardGameInfoProps } from "@/types/gameType/gameType";
 
-const BoardGameInfo = () => {
+const BoardGameInfo = ({
+  KoName,
+  EnName,
+  Image,
+  info,
+  Level,
+  People,
+  RunningTime,
+}: BoardGameInfoProps) => {
   return (
     <section style={{ backgroundColor: "#F0EFED", width: "100vw" }}>
       <div style={{ maxWidth: "1050px", display: "flex" }}>

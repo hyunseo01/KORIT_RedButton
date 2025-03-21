@@ -1,45 +1,50 @@
 "use client";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import GameInfo from "./subcomponents/GameInfo";
-import clsx from "clsx";
 import BoardGame from "./subcomponents/BoardGame";
-import { BoardData } from "@/data/gameData/GameData";
+import clsx from "clsx";
+import { Game } from "@/types/gameType/gameType";
 import GamePageSearch from "./GamePageSearch";
 
 const GamePageMap = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [filteredData, setFilteredData] = useState(BoardData); // Initial board data
+  const [gameData, setGameData] = useState<Game[]>([]);
+  const [filteredData, setFilteredData] = useState<Game[]>([]);
 
-  // Handle the click event for selecting a game
+  useEffect(() => {
+    fetch("http://localhost:8080/game/findall.do")
+      .then((r) => r.json())
+      .then((data) => {
+        setGameData(data);
+        setFilteredData(data);
+      })
+      .catch((e) => {
+        alert("서버 켜라");
+        console.error("Error: ", e);
+      });
+  }, []);
+
+  const handleSearch = (searchTerm: string) => {
+    const filtered = gameData.filter(
+      (game) =>
+        game.koname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        game.enname.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredData(filtered);
+  };
+
   const ClickEvent = (index: number) => {
     setSelectedIndex(selectedIndex === index ? null : index);
   };
 
-  // Search handler to filter the games
-  const handleSearch = (searchTerm: string) => {
-    const filtered = BoardData.filter(
-      (game) =>
-        game.KoName.toLowerCase().includes(searchTerm.toLowerCase()) || // Filter by Korean name
-        game.EnName.toLowerCase().includes(searchTerm.toLowerCase()) // Filter by English name
-    );
-    setFilteredData(filtered); // Update filtered data
-  };
-
   return (
     <div>
-      {/* 검색 입력 컴포넌트 */}
       <GamePageSearch onSearch={handleSearch} />
       <div className="flex flex-col py-[84px] pb-[160px] bg-[#F8F7F5]">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            marginBottom: "20px",
-          }}
-        >
-          <h1 style={{ fontSize: "48px" }}>MONTHLY BOARD GAMES BEST 10</h1>
-          <span style={{ fontSize: "18px" }}>
+        <div className="flex flex-col items-center mb-[20px]">
+          <h1 className="text-[48px]">MONTHLY BOARD GAMES BEST 10</h1>
+          <span className="text-[18px]">
             이 달에 가장 선택을 많이 받은 게임들을 소개합니다.
           </span>
         </div>
@@ -53,22 +58,23 @@ const GamePageMap = () => {
               })}
             >
               <BoardGame
-                Image={v.Image}
-                KoName={v.KoName}
-                EnName={v.EnName}
+                Image={v.image}
+                KoName={v.koname}
+                EnName={v.enname}
                 ClickInfo={() => ClickEvent(i)}
               />
               {selectedIndex === i && (
                 <div className="w-full py-[20px] mt-[20px]">
                   <div className="w-screen">
                     <GameInfo
-                      KoName={BoardData[i].KoName}
-                      EnName={BoardData[i].EnName}
-                      Image={BoardData[i].Image}
-                      info={BoardData[i].info}
-                      Level={BoardData[i].Level}
-                      People={BoardData[i].People}
-                      RunningTime={BoardData[i].RunningTime}
+                      KoName={v.koname}
+                      EnName={v.enname}
+                      Image={v.image}
+                      info1={v.info1}
+                      info2={v.info2}
+                      Level={v.level}
+                      People={v.player}
+                      RunningTime={v.time}
                     />
                   </div>
                 </div>

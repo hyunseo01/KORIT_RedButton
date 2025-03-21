@@ -141,6 +141,7 @@ const KakaoMap = () => {
         >
           <Select width={233} height={44} title="지역으로 검색하기" />
           <Input
+            onChange={(e: string) => console.log(e)}
             width={233}
             height={44}
             title="매장명으로 검색하기"

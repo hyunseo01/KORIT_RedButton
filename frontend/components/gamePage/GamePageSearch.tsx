@@ -1,12 +1,11 @@
 "use client";
+import { GamePageSearchProps } from "@/types/gameType/gameType";
 import Input from "./subcomponents/Input";
 import Select from "./subcomponents/Select";
-type GamePageSearchProps = {
-  onSearch: (searchTerm: string) => void; // searchTerm을 받아서 처리하는 함수
-};
+
 const GamePageSearch = ({ onSearch }: GamePageSearchProps) => {
   const handleInputChange = (searchTerm: string) => {
-    onSearch(searchTerm); // 검색어가 바뀔 때마다 onSearch 호출
+    onSearch(searchTerm);
   };
   return (
     <div className="bg-[#EDECEA]">
