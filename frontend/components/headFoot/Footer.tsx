@@ -1,4 +1,20 @@
+"use client";
+import { useState, useEffect } from "react";
+import FooterResponsive from "../mobileHeaderFooter/FooterResponsive";
+
 const Footer = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 767);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  if (isMobile) {
+    return <FooterResponsive />;
+  }
+
   return (
     <footer className="bg-[#272422] flex justify-center h-[216px]">
       <div className="border border-[#272422] max-w-[1200px] flex justify-center items-center gap-[50px]">
@@ -16,7 +32,7 @@ const Footer = () => {
             넥스트아이빌딩 3층
           </div>
           <div className="text-[16px]">
-            <strong>사업자번호</strong> : 224-86-00895 · <strong>대표자</strong>{" "}
+            <strong>사업자번호</strong> : 224-86-00895 · <strong>대표자</strong>
             : 김동혁 · e-mail : info@redbutton.co.kr
           </div>
           <div className="text-[16px]">
