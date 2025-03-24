@@ -2,20 +2,7 @@
 "use client";
 import React from "react";
 import CrudManagement from "./CrudManagement";
-
-export type GameEntity = {
-  gameno: number;
-  image: string;
-  koname: string;
-  enname: string;
-  info1: string;
-  info2: string;
-  level: string;
-  player: string;
-  time: string;
-  age: string;
-  category: string;
-};
+import { GameEntity } from "@/types/adminMenu/amindMenuType";
 
 type GameForm = Omit<GameEntity, "gameno">;
 

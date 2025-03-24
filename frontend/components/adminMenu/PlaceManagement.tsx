@@ -2,18 +2,7 @@
 "use client";
 import React from "react";
 import CrudManagement from "./CrudManagement";
-
-export type PlaceEntity = {
-  placeno: number;
-  name: string;
-  image: string;
-  address: string;
-  phone: string;
-  latitude: string;
-  longitude: string;
-  time: string;
-  service: string;
-};
+import { PlaceEntity } from "@/types/adminMenu/amindMenuType";
 
 type PlaceForm = Omit<PlaceEntity, "placeno">;
 
@@ -28,7 +17,7 @@ const initialPlace: PlaceForm = {
   service: "",
 };
 
-const renderMenuHeader = () => {
+export const renderMenuHeader = () => {
   return (
     <tr className="bg-gray-100">
       <th className="border border-gray-300 p-2">지점 번호</th>

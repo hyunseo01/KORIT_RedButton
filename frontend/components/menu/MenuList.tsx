@@ -17,7 +17,7 @@ interface MenuItem {
   drinktype: string;
 }
 
-const typeToKorean = {
+const typeToKorean: { [key: string]: string } = {
   coffee: "커피",
   latte: "라떼",
   tea: "티",
@@ -38,8 +38,10 @@ export default function MenuList({ category, type }: Props) {
   }, []);
 
   const filtered =
-    type && typeToKorean[type]
-      ? items.filter((i) => i.drinktype === typeToKorean[type])
+    type && typeToKorean[type as keyof typeof typeToKorean]
+      ? items.filter(
+          (i) => i.drinktype === typeToKorean[type as keyof typeof typeToKorean]
+        )
       : category
       ? items.filter((i) => i.drinktype === category)
       : items;
@@ -56,15 +58,15 @@ export default function MenuList({ category, type }: Props) {
         return (
           <div key={rowIdx}>
             {/* 메뉴 카드 (한 줄에 4개) */}
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5">
-              {row.map((item, idx) => {
+            <div className="grid grid-cols-{4} gap-x-5">
+              {row.map((i, idx) => {
                 const globalIdx = rowStart + idx;
                 return (
                   <MenuCard
-                    key={item.menuno}
-                    image={item.image}
-                    nameKo={item.koname}
-                    nameEN={item.enname}
+                    key={i.menuno}
+                    image={i.image}
+                    nameKo={i.koname}
+                    nameEN={i.enname}
                     onClick={() =>
                       setSelectedIndex(
                         globalIdx === selectedIndex ? null : globalIdx
@@ -76,13 +78,15 @@ export default function MenuList({ category, type }: Props) {
             </div>
 
             {/* 선택된 메뉴 상세 정보 */}
-            {selectedIndex !== null &&
+            {selectedIndex != null &&
               selectedIndex >= rowStart &&
               selectedIndex < rowStart + row.length && (
                 <div className="col-span-4 bg-[#F0EFED] h-[400px] flex items-center">
                   <MenuInfo
                     {...filtered[selectedIndex]}
                     onClose={() => setSelectedIndex(null)}
+                    info=""
+                    allergy=""
                   />
                 </div>
               )}

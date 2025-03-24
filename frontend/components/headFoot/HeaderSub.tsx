@@ -35,22 +35,22 @@ const HeaderSub = () => {
     <header className="absolute w-full h-[200px] bg-[#332f2d] z-30">
       <div className="flex w-full h-full text-[#EDECEA] py-[25px] justify-between items-center max-w-[1120px] mx-auto relative left-[-20px]">
         <div className="flex items-center px-[48px] py-0 w-full h-full">
-          <div className="flex w-full h-full justify-start">
+          <div className="flex w-full h-full">
             {HeaderSubData.map((menu, index) => (
               <div
                 key={index}
                 className={`flex flex-col whitespace-nowrap ${
-                  index === 0
-                    ? "ml-31"
+                  index == 0
+                    ? "ml-23"
                     : index === 1
                     ? "ml-7"
                     : index === 2
-                    ? "ml-34"
+                    ? "ml-24"
                     : index === 3
-                    ? "ml-33"
+                    ? "ml-25"
                     : index === 4
-                    ? "ml-31"
-                    : "ml-20"
+                    ? "ml-24"
+                    : "ml-30"
                 }`}
               >
                 <div className="flex flex-col gap-[10px]">

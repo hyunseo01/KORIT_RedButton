@@ -2,16 +2,7 @@
 "use client";
 import React from "react";
 import CrudManagement from "./CrudManagement";
-
-export type MenuEntity = {
-  menuno: number;
-  image: string;
-  koname: string;
-  enname: string;
-  info: string;
-  allergy: string;
-  drinktype: string;
-};
+import { MenuEntity } from "@/types/adminMenu/amindMenuType";
 
 type MenuForm = Omit<MenuEntity, "menuno">;
 
