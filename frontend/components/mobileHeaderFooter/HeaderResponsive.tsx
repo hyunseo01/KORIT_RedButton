@@ -5,6 +5,8 @@ import HeaderSubResponsive2 from "./HeaderSubResponsive2";
 const HeaderResponsive = () => {
   const [isOpenSide, setIsOpenSide] = useState(false);
 
+  const close = () => setIsOpenSide((prev) => false);
+
   return (
     <>
       <header style={{ backgroundColor: "#272422" }}>
@@ -32,6 +34,7 @@ const HeaderResponsive = () => {
               justifyContent: "end",
               transform: "translateY(-35px)",
               verticalAlign: "middle",
+              cursor: "pointer",
             }}
           >
             <img
@@ -42,7 +45,7 @@ const HeaderResponsive = () => {
           </div>
         </div>
       </header>
-      {isOpenSide && <HeaderSubResponsive2 />}
+      {isOpenSide && <HeaderSubResponsive2 close={close} />}
     </>
   );
 };
