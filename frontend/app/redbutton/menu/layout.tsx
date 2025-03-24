@@ -2,7 +2,7 @@
 
 import MenuHeader from "@/components/menu/MenuHeader";
 import MobileMenuDrinkSelect from "@/components/mobileMenuPage/MobileMenuDrinkSelect";
-import MobileMenuFoodSelect from "@/components/mobileMenuPage/MobileMenuSelect";
+import MobileMenuFoodSelect from "@/components/mobileMenuPage/MobileMenuFoodSelect";
 import { useEffect, useState } from "react";
 
 export default function MenuLayout({

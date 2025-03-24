@@ -139,11 +139,18 @@ const KakaoMap = () => {
               "url('https://redbutton.co.kr/wp-content/uploads/2021/04/FIND-REDBUTTON.jpg')",
           }}
         >
-          <Select width={233} height={44} title="지역으로 검색하기" />
+          <Select
+            width={233}
+            height={44}
+            title="지역으로 검색하기"
+            color="#979797"
+            fontSize={15}
+          />
           <Input
             onChange={(e: string) => console.log(e)}
             width={233}
             height={44}
+            fontSize={15}
             title="매장명으로 검색하기"
             placeholder="매장명으로 검색하기"
           />

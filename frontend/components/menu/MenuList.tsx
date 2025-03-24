@@ -9,13 +9,13 @@ type Props = {
   type?: string; // "coffee", "latte" 등 (음료에서 사용)
 };
 
-interface MenuItem {
+type MenuItem = {
   menuno: number;
   image: string;
   koname: string;
   enname: string;
   drinktype: string;
-}
+};
 
 const typeToKorean: { [key: string]: string } = {
   coffee: "커피",
@@ -58,7 +58,7 @@ export default function MenuList({ category, type }: Props) {
         return (
           <div key={rowIdx}>
             {/* 메뉴 카드 (한 줄에 4개) */}
-            <div className="grid grid-cols-{4} gap-x-5">
+            <div className="grid grid-cols-4 gap-x-5">
               {row.map((i, idx) => {
                 const globalIdx = rowStart + idx;
                 return (
