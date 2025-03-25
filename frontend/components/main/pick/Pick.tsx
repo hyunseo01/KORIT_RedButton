@@ -1,13 +1,8 @@
 "use client";
 
+import { MenuItem } from "@/types/pickMenuType/pickMenuType";
 import PickMenu from "./subcomponents/PickMenu";
 import { useEffect, useState } from "react";
-
-interface MenuItem {
-  koname: string;
-  image: string;
-  enname: string;
-}
 
 const Pick = () => {
   const [mainData, setMainData] = useState<MenuItem[]>([]);

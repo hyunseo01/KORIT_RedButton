@@ -1,21 +1,47 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import SubsliderText from "./subsliderText";
+import { MotionProps } from "@/types/motionType/motionType";
 
-const Motion = () => {
+const Motion = ({
+  EnName,
+  GameInfo,
+  KoName,
+  Level,
+  RunningTime,
+  People,
+}: MotionProps) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkSize();
+    window.addEventListener("resize", checkSize);
+
+    return () => window.removeEventListener("resize", checkSize);
+  }, []);
+
   return (
     <div className="w-[300px] flex justify-center h-[10vh] absolute">
       <motion.div
-        initial={{ x: "-300px", opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
+        initial={{
+          x: isMobile ? 0 : "-300px",
+          y: isMobile ? "100px" : 0,
+          opacity: 0,
+        }}
+        whileInView={{ x: 0, y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 50, duration: 5 }}
       >
         <SubsliderText
-          EnName="LIE-HUNT"
-          KoName="라이헌트"
-          GameInfo="당신들이겪은...어쩌고저쩌고ㅈㄴ어렵네왜안돼 ㅅㅂ"
-          Level="난이도 easy"
-          Recommend="추천인원 2~8인"
-          RunningTime="게임시간 30분"
+          EnName={EnName}
+          KoName={KoName}
+          GameInfo={GameInfo}
+          Level={Level}
+          Recommend={People}
+          RunningTime={RunningTime}
         />
       </motion.div>
     </div>

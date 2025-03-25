@@ -3,3 +3,8 @@ export type PickMenuProps = {
   KoName: string;
   EnName: string;
 };
+export type MenuItem = {
+  koname: string;
+  image: string;
+  enname: string;
+};
