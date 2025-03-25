@@ -1,74 +1,22 @@
-import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+import { useState } from "react";
 import BlackSheet from "./BlackSheet";
+import HedaerSubResponsiveKOR from "./HeaderSubResponsiveKOR";
+import HeaderSubResponsiveINFO from "./HeaderSubResponsiveINFO";
+import HeaderSubResponsiveMENU from "./HeaderSubResponsiveMENU";
 
-const HeaderSubResponsive2 = () => {
+const HeaderSubResponsive2 = ({ close }: { close: () => void }) => {
+  const [isblind, setIsblind] = useState(true);
+
   return (
     <>
-      <BlackSheet />
-      <div
-        style={{
-          position: "fixed",
-          top: "0px",
-          right: "0px",
-          width: "100vw",
-          height: "100%",
-          zIndex: "11",
-        }}
-      >
-        <div>
-          <div
-            style={{
-              backgroundColor: "#4c4c4c",
-              color: "#999999",
-              borderRadius: "4px",
-              fontSize: "17px",
-              display: "flex",
-              alignItems: "center",
-              gap: "4px",
-              cursor: "pointer",
-              width: "81px",
-              height: "30.5px",
-              justifyContent: "center",
-            }}
-          >
-            KOR <IoIosArrowDown />
-          </div>
-        </div>
-        <nav
-          style={{
-            width: "300px",
-            height: "100%",
-            color: "white",
-            backgroundColor: "#272422",
-            display: "flex",
-            fontSize: "17px",
-          }}
-        >
-          <ul>
-            <li>BRAND</li>
-            <li>BOARDGAME</li>
-            <li>MENU</li>
-            <li>STORE</li>
-            <li>CONTACT</li>
-          </ul>
-        </nav>
-        <div>
-          <div
-            style={{
-              fontSize: "13.5px",
-              backgroundColor: "#605549",
-              color: "#b2b2b2",
-              padding: "7px 17px 9px 17px",
-              borderRadius: "3px",
-              display: "inline-block",
-              border: "1px solid yellow",
-            }}
-          >
-            가맹사업 안내
-            <IoIosArrowForward />
-          </div>
-        </div>
+      <BlackSheet close={close} />
+      <div className="fixed top-0 right-0 z-[11]">
+        <HedaerSubResponsiveKOR close={close} />
       </div>
+      <nav className="fixed top-0 right-0 w-[40%] h-full bg-[#272422] text-white flex flex-col p-5 z-[5] text-[17px]">
+        <HeaderSubResponsiveMENU close={close} />
+        <HeaderSubResponsiveINFO />
+      </nav>
     </>
   );
 };

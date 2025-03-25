@@ -1,16 +1,15 @@
-const BlackSheet = () => {
+"use client";
+import { useState } from "react";
+
+type BlackSheetProps = {
+  close: () => void;
+};
+
+const BlackSheet = ({ close }: BlackSheetProps) => {
   return (
     <div
-      style={{
-        zIndex: "2",
-        backgroundColor: "black",
-        opacity: "0.7",
-        position: "fixed",
-        top: "0px",
-        left: "0px",
-        height: "100%",
-        width: "100vw",
-      }}
+      onClick={close}
+      className="fixed inset-0 w-full h-full bg-black opacity-70 cursor-pointer z-2"
     ></div>
   );
 };
