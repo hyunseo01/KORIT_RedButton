@@ -9,17 +9,7 @@ const BlackSheet = ({ close }: BlackSheetProps) => {
   return (
     <div
       onClick={close}
-      style={{
-        zIndex: "2",
-        backgroundColor: "black",
-        opacity: "0.7",
-        position: "fixed",
-        top: "0px",
-        left: "0px",
-        height: "100%",
-        width: "100vw",
-        cursor: "pointer",
-      }}
+      className="fixed inset-0 w-full h-full bg-black opacity-70 cursor-pointer z-2"
     ></div>
   );
 };
