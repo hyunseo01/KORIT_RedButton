@@ -1,5 +1,4 @@
 import Input from "../gamePage/subcomponents/Input";
-import { ButtonType } from "./MobileStoreButton";
 type MobileStoreProps = {
   onSearch: (inputText: string) => void; // searchTerm을 받아서 처리하는 함수
 };

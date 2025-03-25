@@ -1,12 +1,21 @@
 import { SelectProps } from "@/types/gameType/gameType";
 import React from "react";
 
-const Select = ({ width, height, title, fontSize, color }: SelectProps) => {
-  const regionArr = ["시/도", "서울", "경기", "인천"];
+const RegionSelect = ({
+  width,
+  height,
+  title,
+  fontSize,
+  color,
+  onChange,
+}: SelectProps) => {
   return (
-    <>
-      <span className="text-[#7b5c40] font-bold text-[16px]">{title}</span>
+    <div className="flex items-center gap-5">
+      <span className="text-[#7b5c40] font-bold text-[15px]">{title}</span>
       <select
+        onChange={(e) => {
+          onChange(e.target.value);
+        }}
         style={{
           width: `${width}px`,
           height: `${height}px`,
@@ -17,14 +26,14 @@ const Select = ({ width, height, title, fontSize, color }: SelectProps) => {
         name=""
         id=""
       >
-        {regionArr.map((v, index) => (
+        {["시/도", "서울", "경기", "인천"].map((v, index) => (
           <option key={index} value={v}>
             {v}
           </option>
         ))}
       </select>
-    </>
+    </div>
   );
 };
 
-export default Select;
+export default RegionSelect;

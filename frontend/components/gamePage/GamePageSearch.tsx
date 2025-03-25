@@ -1,7 +1,7 @@
 "use client";
 import { GamePageSearchProps } from "@/types/gameType/gameType";
 import Input from "./subcomponents/Input";
-import Select from "./subcomponents/Select";
+import RegionSelect from "./subcomponents/RegionSelect";
 
 const GamePageSearch = ({ onSearch }: GamePageSearchProps) => {
   const handleInputChange = (searchTerm: string) => {
@@ -12,6 +12,7 @@ const GamePageSearch = ({ onSearch }: GamePageSearchProps) => {
       <div className="flex flex-col justify-center items-center gap-4 py-[40px]">
         <div className="flex items-center gap-2">
           <Input
+            fontSize={15}
             width={450}
             height={40}
             title="게임이름"
@@ -21,7 +22,7 @@ const GamePageSearch = ({ onSearch }: GamePageSearchProps) => {
         </div>
         <div className="flex flex-col items-end">
           <div className="flex items-center gap-2">
-            <Select width={450} height={40} title={"지역선택"} />
+            <RegionSelect width={450} height={40} title={"지역선택"} />
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Input from "../gamePage/subcomponents/Input";
-import Select from "../gamePage/subcomponents/Select";
+import RegionSelect from "../gamePage/subcomponents/RegionSelect";
 
 type MobileGamePageSearchProps = {
   onSearch: (searchTerm: string) => void; // searchTerm을 받아서 처리하는 함수
@@ -21,14 +21,14 @@ const MobileGamePageSearch = ({ onSearch }: MobileGamePageSearchProps) => {
           placeholder="게임 이름을 입력하세요."
           onChange={handleInputChange}
         />
+        <RegionSelect
+          width={400}
+          height={40}
+          title="지역"
+          color="#black"
+          fontSize={15}
+        />
       </div>
-      <Select
-        width={400}
-        height={40}
-        title={"지역"}
-        color="#black"
-        fontSize={16}
-      />
     </div>
   );
 };

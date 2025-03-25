@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import MobileStoreList from "./MobileStoreList";
 import MobileStoreInput from "./MobileStoreInput";
 import MobileStoreButton, { ButtonType } from "./MobileStoreButton";
-import Select from "../gamePage/subcomponents/Select";
+import RegionSelect from "../gamePage/subcomponents/RegionSelect";
 
 type MobileStoreMapProps = {
   name: string;
@@ -15,6 +15,7 @@ const MobileStoreMap = () => {
   const [origin, setOrigin] = useState<MobileStoreMapProps[]>([]);
   const [item, setItem] = useState<MobileStoreMapProps[]>([]);
   const [active, setActive] = useState<ButtonType>("store");
+  const [region, setRegion] = useState("시/도");
 
   useEffect(() => {
     fetch("http://localhost:8080/place/findall.do")
@@ -33,32 +34,53 @@ const MobileStoreMap = () => {
     setItem((prev) => filtered);
   };
 
+  const handleSelect = (x: string) => {
+    setRegion((prev) => x);
+  };
+
   return (
     <>
       <MobileStoreButton active={active} setActive={setActive} />
       <div className="bg-[#EDECEA]">
-        <div className="flex justify-center py-[20px] items-center gap-2">
-          {active === "store" ? (
-            <MobileStoreInput onSearch={handleSearch} />
-          ) : (
-            <Select
-              width={400}
-              height={38}
-              title=""
-              color="#979797"
-              fontSize={13}
-            />
-          )}
-        </div>
+        {active === "store" ? (
+          <div className="flex flex-col">
+            <div className="flex justify-center items-center py-[20px]">
+              <MobileStoreInput onSearch={handleSearch} />
+            </div>
+            {item.map((v, i) => (
+              <MobileStoreList
+                key={i}
+                name={v.name}
+                phone={v.phone}
+                address={v.address}
+              />
+            ))}
+          </div>
+        ) : (
+          <>
+            <div className="flex justify-center items-center py-[20px]">
+              <RegionSelect
+                width={400}
+                height={38}
+                title=""
+                color="#979797"
+                fontSize={13}
+                onChange={handleSelect}
+              />
+            </div>
+            {item
+              .filter((v) => v.address.includes(region) || region == "시/도")
+              .map((v, i) => (
+                <MobileStoreList
+                  key={i}
+                  name={v.name}
+                  phone={v.phone}
+                  address={v.address}
+                />
+              ))}
+          </>
+        )}
       </div>
-      {item.map((v, i) => (
-        <MobileStoreList
-          key={i}
-          name={v.name}
-          phone={v.phone}
-          address={v.address}
-        />
-      ))}
     </>
   );
 };
