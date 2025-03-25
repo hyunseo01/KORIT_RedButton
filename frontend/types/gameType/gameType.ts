@@ -32,6 +32,7 @@ export type SelectProps = {
   title: string;
   fontSize: number;
   color: string;
+  onChange: (e: string) => void;
 };
 export type InputProps = {
   width: number;

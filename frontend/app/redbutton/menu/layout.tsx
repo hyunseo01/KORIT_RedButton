@@ -1,8 +1,8 @@
 "use client";
 
 import MenuHeader from "@/components/menu/MenuHeader";
-import MobileMenuDrinkSelect from "@/components/mobileMenuPage/MobileMenuDrinkSelect";
-import MobileMenuFoodSelect from "@/components/mobileMenuPage/MobileMenuFoodSelect";
+import DrinkTypeSelect from "@/components/mobileMenuPage/DrinkTypeSelect";
+import MenuSelect from "@/components/mobileMenuPage/MenuSelect";
 import { useEffect, useState } from "react";
 
 export default function MenuLayout({
@@ -29,11 +29,11 @@ export default function MenuLayout({
           <div className="bg-[#EDECEA] border-b border-b-[#D2D2D2]">
             <div className="flex flex-col flex-1 justify-center items-center gap-4 py-[20px] ">
               <div className="flex items-center gap-2">
-                <MobileMenuFoodSelect />
+                <MenuSelect />
               </div>
               <div className="flex flex-col items-end">
                 <div className="flex items-center gap-2">
-                  <MobileMenuDrinkSelect />
+                  <DrinkTypeSelect />
                 </div>
               </div>
             </div>

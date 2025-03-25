@@ -1,6 +1,4 @@
-const MobileMenuFoodSelect = () => {
-  const foodArr = ["음료", "스낵/푸드", "세트메뉴"];
-
+const SetTypeSelect = () => {
   return (
     <div>
       <select
@@ -8,14 +6,10 @@ const MobileMenuFoodSelect = () => {
         name=""
         id=""
       >
-        {foodArr.map((v, index) => (
-          <option key={index} value={v}>
-            {v}
-          </option>
-        ))}
+        <option>전체메뉴</option>
       </select>
     </div>
   );
 };
 
-export default MobileMenuFoodSelect;
+export default SetTypeSelect;

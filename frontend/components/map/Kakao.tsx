@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
-import Select from "../gamePage/subcomponents/Select";
 import Input from "../gamePage/subcomponents/Input";
 import StoreList from "./StoreList";
 import { PlaceData } from "@/types/store/storeType";
+import RegionSelect from "../gamePage/subcomponents/RegionSelect";
 
 declare global {
   interface Window {
@@ -151,7 +151,7 @@ const KakaoMap = () => {
               "url('https://redbutton.co.kr/wp-content/uploads/2021/04/FIND-REDBUTTON.jpg')",
           }}
         >
-          <Select
+          <RegionSelect
             width={233}
             height={44}
             title="지역으로 검색하기"

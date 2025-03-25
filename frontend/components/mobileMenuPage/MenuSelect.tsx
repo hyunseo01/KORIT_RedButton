@@ -1,15 +1,6 @@
-import React from "react";
+const MenuSelect = () => {
+  const foodArr = ["음료", "스낵/푸드", "세트메뉴"];
 
-const MobileMenuDrinkSelect = () => {
-  const drinkArr = [
-    "전체메뉴",
-    "커피",
-    "라떼",
-    "티",
-    "에이드",
-    "쉐이크/스무디",
-    "소다",
-  ];
   return (
     <div>
       <select
@@ -17,7 +8,7 @@ const MobileMenuDrinkSelect = () => {
         name=""
         id=""
       >
-        {drinkArr.map((v, index) => (
+        {foodArr.map((v, index) => (
           <option key={index} value={v}>
             {v}
           </option>
@@ -27,4 +18,4 @@ const MobileMenuDrinkSelect = () => {
   );
 };
 
-export default MobileMenuDrinkSelect;
+export default MenuSelect;
