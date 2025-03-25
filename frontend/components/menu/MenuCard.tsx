@@ -1,12 +1,5 @@
 import PickMenu from "@/components/main/pick/subcomponents/PickMenu";
-import { div } from "motion/react-client";
-
-type MenuCardProps = {
-  image: string;
-  nameKo: string;
-  nameEN: string;
-  onClick: () => void;
-};
+import { MenuCardProps } from "@/types/menuType/menuType";
 
 export default function MenuCard({
   image,

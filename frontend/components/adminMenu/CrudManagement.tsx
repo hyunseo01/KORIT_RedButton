@@ -2,7 +2,7 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 
 export type CrudProps<T, U> = {
-  endpoint: string; // 예: "menu", "game", "place"
+  endpoint: "menu" | "game" | "place";
   initialForm: U;
   getId: (entity: T) => number; // 예: menu => menu.menuno
   renderHeader: () => React.ReactNode; // 헤더 렌더링 함수
@@ -84,7 +84,7 @@ function CrudManagement<T extends object, U extends object>({
         .then((updatedEntity: T) => {
           setEntities(
             entities.map((entity) =>
-              getId(entity) === editingId ? updatedEntity : entity
+              getId(entity) == editingId ? updatedEntity : entity
             )
           );
           setEditingId(null);
@@ -132,9 +132,9 @@ function CrudManagement<T extends object, U extends object>({
             type="submit"
             className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
           >
-            {editingId === null ? "추가" : "수정"}
+            {editingId == null ? "추가" : "수정"}
           </button>
-          {editingId !== null && (
+          {editingId != null && (
             <button
               type="button"
               onClick={() => {

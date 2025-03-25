@@ -5,6 +5,7 @@ import Script from "next/script";
 import Select from "../gamePage/subcomponents/Select";
 import Input from "../gamePage/subcomponents/Input";
 import StoreList from "./StoreList";
+import { PlaceData } from "@/types/store/storeType";
 
 declare global {
   interface Window {
@@ -13,18 +14,6 @@ declare global {
 }
 
 const KAKAO_MAP_API_KEY = "84896ad61f8cfbdb4cd0eebe1eeb1f14";
-
-interface PlaceData {
-  placeno: number;
-  name: string;
-  image: string;
-  address: string;
-  phone: string;
-  latitude: string;
-  longitude: string;
-  time: string;
-  service: string;
-}
 
 const KakaoMap = () => {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
@@ -75,6 +64,29 @@ const KakaoMap = () => {
         },
       ],
     });
+
+    /* 이거 작동 안함 테일윈드 말고 스타일 버전으로 사용 */
+    // const clusterer = new window.kakao.maps.MarkerClusterer({
+    //   map: kakaoMap,
+    //   averageCenter: true,
+    //   minLevel: 5,
+    //   styles: [
+    //     {
+    //       content: `
+    //         <div class="
+    //           w-9 h-28
+    //           bg-no-repeat bg-center bg-contain
+    //           flex items-center justify-center
+    //           text-sm font-bold text-black text-center
+    //           leading-7
+    //           bg-[url('https://redbutton.co.kr/wp-content/uploads/2021/04/redbutton_markers.png')]
+    //         ">
+    //           {count}
+    //         </div>
+    //       `,
+    //     },
+    //   ],
+    // });
 
     const markerImage = new window.kakao.maps.MarkerImage(
       "https://redbutton.co.kr/wp-content/uploads/2021/04/redbutton_marker.png",

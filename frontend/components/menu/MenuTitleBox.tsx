@@ -1,7 +1,4 @@
-type MenuTitleBoxProps = {
-  title: string;
-  subTitle: string;
-};
+import { MenuTitleBoxProps } from "@/types/menuType/menuType";
 
 const MenuTitleBox = ({ title, subTitle }: MenuTitleBoxProps) => {
   return (

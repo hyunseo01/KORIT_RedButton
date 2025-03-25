@@ -1,8 +1,4 @@
-type StoreListProps = {
-  storeName: string;
-  address: string;
-  phone: string;
-};
+import { StoreListProps } from "@/types/store/storeType";
 
 const StoreList = ({ storeName, address, phone }: StoreListProps) => {
   return (

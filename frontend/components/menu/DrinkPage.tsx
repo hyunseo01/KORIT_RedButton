@@ -2,8 +2,8 @@
 
 import MenuTitleBox from "@/components/menu/MenuTitleBox";
 import MenuList from "@/components/menu/MenuList";
+import { types } from "@/types/menuType/menuType";
 
-const types = ["coffee", "latte", "tea", "ade", "smoothie", "soda"];
 const typeToKorean: { [key in (typeof types)[number]]: string } = {
   coffee: "커피",
   latte: "라떼",
