@@ -58,10 +58,12 @@ const HeaderSub = () => {
                     let itemHref = menu.href;
 
                     if (menu.name === "MENU") {
-                      if (item === "음료") itemHref = "/redbutton/menu/drink";
+                      if (item === "음료")
+                        itemHref = "/redbutton/newMenu/drink";
                       if (item === "스낵/푸드")
-                        itemHref = "/redbutton/menu/snack";
-                      if (item === "세트메뉴") itemHref = "/redbutton/menu/set";
+                        itemHref = "/redbutton/newMenu/snack";
+                      if (item === "세트메뉴")
+                        itemHref = "/redbutton/newMenu/set";
                     }
 
                     return (

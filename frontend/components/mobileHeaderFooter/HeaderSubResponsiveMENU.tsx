@@ -1,5 +1,6 @@
 import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
+import Link from "next/link";
 
 const HeaderSubResponsiveMENU = ({ close }: { close: () => void }) => {
   const [isBrandVisible, setIsBrandVisible] = useState(false);
@@ -40,10 +41,18 @@ const HeaderSubResponsiveMENU = ({ close }: { close: () => void }) => {
       </li>
       {isBrandVisible && (
         <div className="bg-[#332f2d] text-[#edecea] flex flex-col gap-[20px] mb-[20px] cursor-pointer">
-          <span>레드버튼 소개</span>
-          <span>레드버튼 멤버십 앱</span>
-          <span>연혁</span>
-          <span>채용안내</span>
+          <Link href={"/redbutton/notFound"}>
+            <span>레드버튼 소개</span>
+          </Link>
+          <Link href={"/redbutton/notFound"}>
+            <span>레드버튼 멤버십 앱</span>
+          </Link>
+          <Link href={"/redbutton/notFound"}>
+            <span>연혁</span>
+          </Link>
+          <Link href={"/redbutton/notFound"}>
+            <span>채용안내</span>
+          </Link>
         </div>
       )}
 
@@ -55,8 +64,12 @@ const HeaderSubResponsiveMENU = ({ close }: { close: () => void }) => {
       </li>
       {isBoardgameVisible && (
         <div className="bg-[#332f2d] text-[#edecea] flex flex-col gap-[20px] mb-[20px] cursor-pointer">
-          <span>레드버튼 전용 앱</span>
-          <span>보드게임 찾기</span>
+          <Link href={"/redbutton/notFound"}>
+            <span>레드버튼 전용 앱</span>
+          </Link>
+          <Link href={"/redbutton/gameSearch"}>
+            <span>보드게임 찾기</span>
+          </Link>
         </div>
       )}
 
@@ -68,9 +81,15 @@ const HeaderSubResponsiveMENU = ({ close }: { close: () => void }) => {
       </li>
       {isMenuVisible && (
         <div className="bg-[#332f2d] text-[#edecea] flex flex-col gap-[20px] mb-[20px] cursor-pointer">
-          <span>음료</span>
-          <span>스낵/푸드</span>
-          <span>세트메뉴</span>
+          <Link href={"/redbutton/newMenu/drink"}>
+            <span>음료</span>
+          </Link>
+          <Link href={"/redbutton/newMenu/snack"}>
+            <span>스낵/푸드</span>
+          </Link>
+          <Link href={"/redbutton/newMenu/set"}>
+            <span>세트메뉴</span>
+          </Link>
         </div>
       )}
 
@@ -82,7 +101,9 @@ const HeaderSubResponsiveMENU = ({ close }: { close: () => void }) => {
       </li>
       {isStoreVisible && (
         <div className="bg-[#332f2d] text-[#edecea] flex flex-col gap-[20px] mb-[20px] cursor-pointer">
-          <span>매장찾기</span>
+          <Link href={"/redbutton/store"}>
+            <span>매장찾기</span>
+          </Link>
         </div>
       )}
 
@@ -94,10 +115,18 @@ const HeaderSubResponsiveMENU = ({ close }: { close: () => void }) => {
       </li>
       {isContactVisible && (
         <div className="bg-[#332f2d] text-[#edecea] flex flex-col gap-[20px] mb-[20px] cursor-pointer">
-          <span>공지사항</span>
-          <span>제휴/제안</span>
-          <span>자주묻는 질문</span>
-          <span>고객의견</span>
+          <Link href={"/redbutton/notFound"}>
+            <span>공지사항</span>
+          </Link>
+          <Link href={"/redbutton/notFound"}>
+            <span>제휴/제안</span>
+          </Link>
+          <Link href={"/redbutton/notFound"}>
+            <span>자주묻는 질문</span>
+          </Link>
+          <Link href={"/redbutton/notFound"}>
+            <span>고객의견</span>
+          </Link>
         </div>
       )}
     </ul>
