@@ -65,29 +65,6 @@ const KakaoMap = () => {
       ],
     });
 
-    /* 이거 작동 안함 테일윈드 말고 스타일 버전으로 사용 */
-    // const clusterer = new window.kakao.maps.MarkerClusterer({
-    //   map: kakaoMap,
-    //   averageCenter: true,
-    //   minLevel: 5,
-    //   styles: [
-    //     {
-    //       content: `
-    //         <div class="
-    //           w-9 h-28
-    //           bg-no-repeat bg-center bg-contain
-    //           flex items-center justify-center
-    //           text-sm font-bold text-black text-center
-    //           leading-7
-    //           bg-[url('https://redbutton.co.kr/wp-content/uploads/2021/04/redbutton_markers.png')]
-    //         ">
-    //           {count}
-    //         </div>
-    //       `,
-    //     },
-    //   ],
-    // });
-
     const markerImage = new window.kakao.maps.MarkerImage(
       "https://redbutton.co.kr/wp-content/uploads/2021/04/redbutton_marker.png",
       new window.kakao.maps.Size(36, 50),
@@ -132,7 +109,6 @@ const KakaoMap = () => {
     map.setLevel(3);
     map.setCenter(pos);
   };
-
   return (
     <div className="w-full max-w-[1200px] mx-auto">
       <Script

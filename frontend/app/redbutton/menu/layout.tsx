@@ -1,8 +1,8 @@
 "use client";
 
-import MenuHeader from "@/components/menu/MenuHeader";
 import DrinkTypeSelect from "@/components/mobileMenuPage/DrinkTypeSelect";
 import MenuSelect from "@/components/mobileMenuPage/MenuSelect";
+import MenuHeader from "@/components/newMenu/MenuHeader";
 import { useEffect, useState } from "react";
 
 export default function MenuLayout({
