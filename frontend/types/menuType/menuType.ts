@@ -41,6 +41,10 @@ export type NewMenuProps = {
 export type NewMenuDrinkProps = {
   params: Promise<{ type: string }>;
 };
+
+export type NewMenuPageProps = {
+  params: Promise<{ category: string }>;
+};
 export const menuConfig: Record<string, { title: string; subTitle: string }> = {
   coffee: { title: "COFFEE", subTitle: "커피" },
   latte: { title: "LATTE", subTitle: "라떼" },

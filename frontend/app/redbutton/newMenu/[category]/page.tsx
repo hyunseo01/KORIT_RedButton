@@ -1,9 +1,5 @@
 import NewMenuClient from "@/components/newMenu/NewMenuClient";
-import { pageConfig } from "@/types/menuType/menuType";
-
-type NewMenuPageProps = {
-  params: { category: string };
-};
+import { NewMenuPageProps, pageConfig } from "@/types/menuType/menuType";
 
 const NewMenuPage = async ({ params }: NewMenuPageProps) => {
   const { category } = await params;
