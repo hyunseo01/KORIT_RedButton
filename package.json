@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "clsx": "^2.1.1"
+    "@types/react-responsive": "^8.0.8",
+    "clsx": "^2.1.1",
+    "react-responsive": "^10.0.1"
   }
 }

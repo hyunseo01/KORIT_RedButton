@@ -1,8 +1,10 @@
 "use client";
-
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 
 const StickyButton: React.FC = () => {
+  const isPC = useMediaQuery({ minWidth: 767 }); // 화면 크기가 767px 이상이면 true
+
   const scrollToTop = () => {
     const scrollDuration = 250;
     const startTime = performance.now();
@@ -24,20 +26,14 @@ const StickyButton: React.FC = () => {
 
   return (
     <div>
-      <img
-        style={{
-          position: "fixed",
-          width: "64px",
-          height: "64px",
-          zIndex: "99",
-          bottom: "100px",
-          right: "100px",
-          cursor: "pointer",
-        }}
-        src="https://redbutton.co.kr/wp-content/uploads/2021/04/TOP_button.png"
-        alt="Scroll to Top"
-        onClick={scrollToTop}
-      />
+      {isPC && (
+        <img
+          className="fixed bottom-[100px] right-[100px] w-[64px] h-[64px] z-50 cursor-pointer"
+          src="https://redbutton.co.kr/wp-content/uploads/2021/04/TOP_button.png"
+          alt="Scroll to Top"
+          onClick={scrollToTop}
+        />
+      )}
     </div>
   );
 };

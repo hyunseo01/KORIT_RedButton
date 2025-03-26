@@ -1,6 +1,5 @@
 "use client";
 import { menuList } from "@/data/menuData/menuData";
-import { textMaker } from "@/func/util";
 import { useRouter, usePathname } from "next/navigation";
 
 const MenuHeader = () => {
@@ -22,15 +21,23 @@ const MenuHeader = () => {
       </div>
       <div className="bg-[#EDECEA] h-[90px] py-[28px]">
         <div className="flex gap-[20px] justify-center items-center pt-[5px] text-[18px]">
-          {menuList.map((menu) => (
-            <span
-              key={menu.name}
-              onClick={() => router.push(menu.path)}
-              className={`cursor-pointer ${textMaker(pathname, menu.path)}`}
-            >
-              {menu.name}
-            </span>
-          ))}
+          {menuList.map((menu, index) => {
+            const isActive = pathname === menu.path;
+
+            return (
+              <span
+                key={menu.name}
+                onClick={() => router.push(menu.path)}
+                className={`cursor-pointer ${
+                  isActive
+                    ? "underline text-[#7b5c40] font-bold"
+                    : "text-[#979797]"
+                }`}
+              >
+                {menu.name}
+              </span>
+            );
+          })}
         </div>
       </div>
     </div>
