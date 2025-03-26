@@ -9,8 +9,9 @@ const RegionSelect = ({
   color,
   onChange,
 }: SelectProps) => {
+  const region = ["시/도", "서울", "경기", "인천"];
   return (
-    <div className="flex items-center gap-5">
+    <>
       <span className="text-[#7b5c40] font-bold text-[15px]">{title}</span>
       <select
         onChange={(e) => {
@@ -26,13 +27,13 @@ const RegionSelect = ({
         name=""
         id=""
       >
-        {["시/도", "서울", "경기", "인천"].map((v, index) => (
+        {region.map((v, index) => (
           <option key={index} value={v}>
             {v}
           </option>
         ))}
       </select>
-    </div>
+    </>
   );
 };
 

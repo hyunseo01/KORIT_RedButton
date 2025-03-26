@@ -5,7 +5,7 @@ import MobileStoreInput from "./MobileStoreInput";
 import MobileStoreButton, { ButtonType } from "./MobileStoreButton";
 import RegionSelect from "../gamePage/subcomponents/RegionSelect";
 
-type MobileStoreMapProps = {
+export type MobileStoreMapProps = {
   name: string;
   phone: string;
   address: string;

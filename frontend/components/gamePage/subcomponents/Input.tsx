@@ -10,8 +10,8 @@ const Input = ({
   onChange,
 }: InputProps) => {
   return (
-    <div className="flex items-center gap-5">
-      <span className="text-[#7b5c40] font-bold ">{title}</span>
+    <>
+      <span className="text-[#7b5c40] font-bold text-[15px]">{title}</span>
       <input
         style={{
           width: `${width}px`,
@@ -23,7 +23,7 @@ const Input = ({
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
       />
-    </div>
+    </>
   );
 };
 

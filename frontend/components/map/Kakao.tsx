@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
-import Input from "../gamePage/subcomponents/Input";
 import StoreList from "./StoreList";
 import { PlaceData } from "@/types/store/storeType";
 import RegionSelect from "../gamePage/subcomponents/RegionSelect";
+import StoreInput from "./StoreInput";
 
 declare global {
   interface Window {
@@ -22,6 +22,7 @@ const KakaoMap = () => {
   const [visiblePlaces, setVisiblePlaces] = useState<PlaceData[]>([]);
   const [map, setMap] = useState<any>(null);
   const markerListRef = useRef<{ marker: any; data: PlaceData }[]>([]);
+  const [region, setRegion] = useState("시/도");
 
   useEffect(() => {
     (async () => {
@@ -64,6 +65,29 @@ const KakaoMap = () => {
         },
       ],
     });
+
+    /* 이거 작동 안함 테일윈드 말고 스타일 버전으로 사용 */
+    // const clusterer = new window.kakao.maps.MarkerClusterer({
+    //   map: kakaoMap,
+    //   averageCenter: true,
+    //   minLevel: 5,
+    //   styles: [
+    //     {
+    //       content: `
+    //         <div class="
+    //           w-9 h-28
+    //           bg-no-repeat bg-center bg-contain
+    //           flex items-center justify-center
+    //           text-sm font-bold text-black text-center
+    //           leading-7
+    //           bg-[url('https://redbutton.co.kr/wp-content/uploads/2021/04/redbutton_markers.png')]
+    //         ">
+    //           {count}
+    //         </div>
+    //       `,
+    //     },
+    //   ],
+    // });
 
     const markerImage = new window.kakao.maps.MarkerImage(
       "https://redbutton.co.kr/wp-content/uploads/2021/04/redbutton_marker.png",
@@ -109,6 +133,16 @@ const KakaoMap = () => {
     map.setLevel(3);
     map.setCenter(pos);
   };
+
+  const handleSearch = (x: string) => {
+    const filtered = places.filter((v) =>
+      v.name.toLowerCase().includes(x.toLowerCase())
+    );
+    setVisiblePlaces((prev) => filtered);
+  };
+  const handleSelect = (x: string) => {
+    setRegion((prev) => x);
+  };
   return (
     <div className="w-full max-w-[1200px] mx-auto">
       <Script
@@ -133,33 +167,29 @@ const KakaoMap = () => {
             title="지역으로 검색하기"
             color="#979797"
             fontSize={15}
+            onChange={handleSelect}
           />
-          <Input
-            onChange={(e: string) => console.log(e)}
-            width={233}
-            height={44}
-            fontSize={15}
-            title="매장명으로 검색하기"
-            placeholder="매장명으로 검색하기"
-          />
+          <StoreInput onSearch={handleSearch} />
         </div>
       </div>
 
       <div className="w-full border border-gray-300 mt-4">
         <ul>
-          {visiblePlaces.map((v) => (
-            <li
-              key={v.placeno}
-              onClick={() => moveToLocation(v.latitude, v.longitude)}
-              className="cursor-pointer p-2 border-b border-gray-200 hover:bg-gray-50"
-            >
-              <StoreList
-                storeName={v.name}
-                address={v.address}
-                phone={v.phone}
-              />
-            </li>
-          ))}
+          {visiblePlaces
+            .filter((v) => v.address.includes(region) || region == "시/도")
+            .map((v) => (
+              <li
+                key={v.placeno}
+                onClick={() => moveToLocation(v.latitude, v.longitude)}
+                className="cursor-pointer p-2 border-b border-gray-200 hover:bg-gray-50"
+              >
+                <StoreList
+                  storeName={v.name}
+                  address={v.address}
+                  phone={v.phone}
+                />
+              </li>
+            ))}
         </ul>
       </div>
     </div>

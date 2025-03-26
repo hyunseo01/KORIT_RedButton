@@ -3,7 +3,7 @@ import { StoreListProps } from "@/types/store/storeType";
 const StoreList = ({ storeName, address, phone }: StoreListProps) => {
   return (
     <div className="flex h-[150px] justify-between">
-      <h1 className="flex items-center justify-center w-[200px] text-[#d71414] text-[22px] font-bold p-[15px]">
+      <h1 className="flex items-center justify-center w-[200px] text-[#d71414] text-[22px] font-bold p-[15px] text-center">
         {storeName}
       </h1>
 
