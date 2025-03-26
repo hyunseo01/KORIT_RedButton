@@ -3,7 +3,7 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 
 const StickyButton: React.FC = () => {
-  const isPC = useMediaQuery({ minWidth: 767 }); // 화면 크기가 767px 이상이면 true
+  const isPC = useMediaQuery({ minWidth: 767 });
 
   const scrollToTop = () => {
     const scrollDuration = 250;
