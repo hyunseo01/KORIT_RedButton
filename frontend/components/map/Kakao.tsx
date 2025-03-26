@@ -138,10 +138,10 @@ const KakaoMap = () => {
     const filtered = places.filter((v) =>
       v.name.toLowerCase().includes(x.toLowerCase())
     );
-    setVisiblePlaces((prev) => filtered);
+    setVisiblePlaces(() => filtered);
   };
   const handleSelect = (x: string) => {
-    setRegion((prev) => x);
+    setRegion(() => x);
   };
   return (
     <div className="w-full max-w-[1200px] mx-auto">

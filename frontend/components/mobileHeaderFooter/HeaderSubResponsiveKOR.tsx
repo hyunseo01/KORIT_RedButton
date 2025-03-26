@@ -1,7 +1,7 @@
 import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
 
-const HedaerSubResponsiveKOR = ({ close }: { close: () => void }) => {
+const HedaerSubResponsiveKOR = () => {
   const [isEnglishVisible, setIsEnglishVisible] = useState(false);
   const toggleLanguage = () => {
     setIsEnglishVisible((prev) => !prev);
