@@ -2,7 +2,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
 import Link from "next/link";
 
-const HeaderSubResponsiveMENU = ({ close }: { close: () => void }) => {
+const HeaderSubResponsiveMENU = () => {
   const [isBrandVisible, setIsBrandVisible] = useState(false);
   const [isBoardgameVisible, setIsBoardgameVisible] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
