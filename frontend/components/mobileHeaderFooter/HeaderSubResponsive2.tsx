@@ -1,12 +1,9 @@
-import { useState } from "react";
 import BlackSheet from "./BlackSheet";
 import HedaerSubResponsiveKOR from "./HeaderSubResponsiveKOR";
 import HeaderSubResponsiveINFO from "./HeaderSubResponsiveINFO";
 import HeaderSubResponsiveMENU from "./HeaderSubResponsiveMENU";
 
 const HeaderSubResponsive2 = ({ close }: { close: () => void }) => {
-  const [isblind, setIsblind] = useState(true);
-
   return (
     <>
       <BlackSheet close={close} />

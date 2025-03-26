@@ -1,5 +1,3 @@
-type MenuSelectProps = {};
-
 const MenuSelect = () => {
   const foodArr = ["음료", "스낵/푸드", "세트메뉴"];
 

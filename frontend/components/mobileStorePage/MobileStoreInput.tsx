@@ -1,10 +1,10 @@
 import Input from "../gamePage/subcomponents/Input";
 type MobileStoreProps = {
-  onSearch: (inputText: string) => void; // searchTerm을 받아서 처리하는 함수
+  onSearch: (inputText: string) => void;
 };
 const MobileStoreInput = ({ onSearch }: MobileStoreProps) => {
   const handleInputChange = (inputText: string) => {
-    onSearch(inputText); // 검색어가 바뀔 때마다 onSearch 호출
+    onSearch(inputText);
   };
 
   return (

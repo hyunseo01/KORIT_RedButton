@@ -21,8 +21,8 @@ const MobileStoreMap = () => {
     fetch("http://localhost:8080/place/findall.do")
       .then((r) => r.json())
       .then((v) => {
-        setOrigin((prev) => v);
-        setItem((prev) => v);
+        setOrigin(() => v);
+        setItem(() => v);
       })
       .catch(() => alert("서버키라고"));
   }, []);
@@ -31,11 +31,11 @@ const MobileStoreMap = () => {
     const filtered = origin.filter((v) =>
       v.name.toLowerCase().includes(x.toLowerCase())
     );
-    setItem((prev) => filtered);
+    setItem(() => filtered);
   };
 
   const handleSelect = (x: string) => {
-    setRegion((prev) => x);
+    setRegion(() => x);
   };
 
   return (

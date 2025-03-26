@@ -2,7 +2,7 @@
 
 import { menuList1, menuList2, menuList3 } from "@/data/menuData/menuData";
 import { textMaker } from "@/func/util";
-import { useRouter, usePathname, notFound } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 type MenuHeaderProps = { category: "drink" | "snack" | "set" };
 
