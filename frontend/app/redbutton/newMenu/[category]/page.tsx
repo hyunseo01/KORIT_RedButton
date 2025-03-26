@@ -1,40 +1,30 @@
-"use client";
+import NewMenuClient from "@/components/newMenu/NewMenuClient";
+import { pageConfig } from "@/types/menuType/menuType";
 
-import { useState } from "react";
-import SetName from "@/components/newMenu/detail/SetName";
-import MenuList2 from "@/components/newMenu/MenuList2";
-import { NewMenuProps, pageConfig } from "@/types/menuType/menuType";
+type NewMenuPageProps = {
+  params: { category: string };
+};
 
-const NewMenuPage = ({ params: { category } }: NewMenuProps) => {
-  const [selected, setSelected] = useState<number | null>(null);
-  const config = pageConfig[category];
+const NewMenuPage = async ({ params }: NewMenuPageProps) => {
+  const { category } = await params;
 
-  if (!config)
+  // 서버에서 유효한 카테고리인지 확인
+  if (!pageConfig[category]) {
     return (
       <div className="text-center text-[50px] py-[100px]">404 NOT FOUND</div>
     );
+  }
 
-  return (
-    <div className="py-[45px] space-y-12 max-w-[1050px] mx-auto">
-      {config.subTitles.map((subTitle, index) => (
-        <section key={subTitle}>
-          {config.title && (
-            <SetName
-              title={
-                Array.isArray(config.title) ? config.title[index] : config.title
-              }
-              subTitle={subTitle}
-            />
-          )}
-          <MenuList2
-            filterFn={(v) => v.drinktype === subTitle}
-            select={selected}
-            onSelected={setSelected}
-          />
-        </section>
-      ))}
-    </div>
-  );
+  const config = pageConfig[category];
+
+  // title이 undefined일 경우 기본값 설정
+  const safeConfig = {
+    ...config,
+    title: config.title || "Default Title",
+  };
+
+  // 클라이언트 컴포넌트로 데이터 전달
+  return <NewMenuClient category={category} config={safeConfig} />;
 };
 
 export default NewMenuPage;

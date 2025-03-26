@@ -1,54 +1,26 @@
-"use client";
-
+import ClientLayout from "@/components/newMenu/ClientLayout";
 import MenuHeader from "@/components/newMenu/MenuHeader";
-import { useEffect, useState } from "react";
 
 type LayoutProps = {
   children: React.ReactNode;
-  params: Promise<{ category: string }>;
+  params: { category: "drink" | "snack" | "set" };
 };
 
 export default async function Layout({ children, params }: LayoutProps) {
   const { category } = await params;
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 1000);
-    };
 
-    handleResize();
+  const isValidCategory = ["drink", "snack", "set"].includes(category);
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  if (!isValidCategory) {
+    return (
+      <div className="text-center text-[50px] py-[100px]">404 NOT FOUND</div>
+    );
+  }
 
   return (
-    <>
-      <>
-        {!isMobile ? (
-          <>
-            <div>
-              <MenuHeader
-                category={
-                  category == "drink"
-                    ? "drink"
-                    : category == "snack"
-                    ? "snack"
-                    : category == "set"
-                    ? "set"
-                    : "drink"
-                }
-              />
-              {children}
-            </div>
-          </>
-        ) : (
-          <>
-            {/* <MenuHeader /> */}
-            {children}
-          </>
-        )}
-      </>
-    </>
+    <div>
+      <MenuHeader category={category} />
+      <ClientLayout>{children}</ClientLayout>
+    </div>
   );
 }

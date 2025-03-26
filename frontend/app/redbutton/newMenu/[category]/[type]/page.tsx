@@ -1,24 +1,23 @@
-"use client";
-
-import { useState } from "react";
-import MenuList2 from "@/components/newMenu/MenuList2";
-import SetName from "@/components/newMenu/detail/SetName";
+import NewMenuDrinkClient from "@/components/newMenu/NewMenuDrinkClient";
 import { menuConfig, NewMenuDrinkProps } from "@/types/menuType/menuType";
 
-const NewMenuDrinkPage = ({ params: { type } }: NewMenuDrinkProps) => {
-  const [selected, setSelected] = useState<number | null>(null);
+const NewMenuDrinkPage = async ({ params }: NewMenuDrinkProps) => {
+  const { type } = await params;
+
+  // 메뉴 설정 가져오기
   const config = menuConfig[type];
+  if (!config) {
+    return (
+      <div className="text-center text-[50px] py-[100px]">
+        404 NOT FOUND (음료)
+      </div>
+    );
+  }
 
-  if (!config) return <div>사공사낫파운드(음료)</div>;
-
+  // 클라이언트 컴포넌트로 데이터 전달
   return (
-    <div className="py-[45px]">
-      <SetName title={config.title} subTitle={config.subTitle} />
-      <MenuList2
-        filterFn={(v) => v.drinktype === config.subTitle}
-        select={selected}
-        onSelected={setSelected}
-      />
+    <div>
+      <NewMenuDrinkClient config={config} />
     </div>
   );
 };

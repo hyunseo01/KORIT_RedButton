@@ -10,11 +10,20 @@ const MenuHeader = ({ category }: MenuHeaderProps) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const menus = {
-    drink: menuList1,
-    snack: menuList2,
-    set: menuList3,
-  }[category];
+  // category 값 검증
+  if (!["drink", "snack", "set"].includes(category)) {
+    return (
+      <div className="text-center text-[50px] py-[100px]">Invalid category</div>
+    );
+  }
+
+  // menus 기본값 설정
+  const menus =
+    {
+      drink: menuList1,
+      snack: menuList2,
+      set: menuList3,
+    }[category] || [];
 
   return (
     <div>
@@ -32,15 +41,22 @@ const MenuHeader = ({ category }: MenuHeaderProps) => {
 
       <div className="bg-[#EDECEA] h-[90px] py-[28px]">
         <div className="flex gap-[20px] justify-center items-center pt-[5px] text-[18px]">
-          {menus.map((menu) => (
-            <span
-              key={menu.name}
-              onClick={() => router.push(menu.path)}
-              className={`cursor-pointer ${textMaker(pathname, menu.path)}`}
-            >
-              {menu.name}
-            </span>
-          ))}
+          {menus.map((menu) => {
+            const isActive = pathname === menu.path;
+            return (
+              <span
+                key={menu.name}
+                onClick={() => router.push(menu.path)}
+                className={`cursor-pointer ${
+                  isActive
+                    ? "underline text-[#7b5c40] font-bold"
+                    : "text-[#979797]"
+                }`}
+              >
+                {menu.name}
+              </span>
+            );
+          })}
         </div>
       </div>
     </div>
