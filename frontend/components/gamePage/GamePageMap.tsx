@@ -43,8 +43,15 @@ const GamePageMap = () => {
       <GamePageSearch onSearch={handleSearch} />
       <div className="flex flex-col py-[84px] pb-[160px] bg-[#F8F7F5]">
         <div className="flex flex-col items-center mb-[20px]">
-          <h1 className="text-[48px]">MONTHLY BOARD GAMES BEST 10</h1>
-          <span className="text-[18px]">
+          <h1 className="text-[48px] md:block hidden">
+            MONTHLY BOARD GAMES BEST 10
+          </h1>
+          <h1 className="font-bold text-[36px] md:text-[48px] md:hidden block text-center">
+            MONTHLY <br />
+            BOARD GAMES
+            <br /> BEST 10
+          </h1>
+          <span className="text-[14px] md:text-[18px]">
             이 달에 가장 선택을 많이 받은 게임들을 소개합니다.
           </span>
         </div>

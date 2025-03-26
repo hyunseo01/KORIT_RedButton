@@ -35,9 +35,9 @@ const Pick = () => {
       <div className="w-full max-w-[1200px] mx-auto flex flex-col justify-center items-center gap-[10px] pt-[73px] pb-[103px]">
         <strong className="text-[54px] font-bold">BUTTONER&apos;S PICK</strong>
         <span className="text-[18px]">버트너가 선정한 이 달의 메뉴입니다.</span>
-        <div className="flex gap-[20px] mt-[50px] w-full">
+        <div className="flex gap-[20px] mt-[50px] w-full ">
           <div className="md:block hidden w-full">
-            <div className="flex gap-[20px]">
+            <div className="flex justify-center gap-[20px]">
               {filteredMenu.map((v) => (
                 <PickMenu
                   key={v.koname}
