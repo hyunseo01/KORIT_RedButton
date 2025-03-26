@@ -66,3 +66,8 @@ https://github.com/hyunseo01/RedButton.git
 - **데이터베이스:** MySQL
 
 ---
+## 어려웠던 점 & 해결 방안
+- **우현서:
+- **장효환:
+- **전민희:
+- **김미소:
