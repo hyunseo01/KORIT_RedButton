@@ -5,9 +5,19 @@ import SetName from "@/components/newMenu/detail/SetName";
 import MenuList2 from "@/components/newMenu/MenuList2";
 import { NewMenuProps } from "@/types/menuType/menuType";
 
-const pageConfig: Record<string, { title?: string; subTitles: string[] }> = {
+const pageConfig: Record<
+  string,
+  { title?: string | string[]; subTitles: string[] }
+> = {
   drink: {
-    title: "DRINK MENU",
+    title: [
+      "COFFEE",
+      "LATTE",
+      "TEA",
+      "ADE & JUICE",
+      "SHAKE & SMOOTHIE",
+      "SODA",
+    ],
     subTitles: [
       "커피",
       "라떼",
@@ -38,9 +48,16 @@ const NewMenuPage = ({ params: { category } }: NewMenuProps) => {
 
   return (
     <div className="py-[45px] space-y-12 max-w-[1050px] mx-auto">
-      {config.subTitles.map((subTitle, idx) => (
+      {config.subTitles.map((subTitle, index) => (
         <section key={subTitle}>
-          {config.title && <SetName title={config.title} subTitle={subTitle} />}
+          {config.title && (
+            <SetName
+              title={
+                Array.isArray(config.title) ? config.title[index] : config.title
+              }
+              subTitle={subTitle}
+            />
+          )}
           <MenuList2
             filterFn={(v) => v.drinktype === subTitle}
             select={selected}

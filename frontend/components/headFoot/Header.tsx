@@ -50,7 +50,7 @@ const Header = ({ onBrandHover }: { onBrandHover: () => void }) => {
             {[
               { name: "BRAND", href: "/redbutton/brand" },
               { name: "BOARDGAME", href: "/redbutton/game" },
-              { name: "MENU", href: "/redbutton/menu/drink" },
+              { name: "MENU", href: "/redbutton/newMenu/drink" },
               { name: "STORE", href: "/redbutton/store" },
               { name: "CONTACT", href: "/redbutton/contact" },
             ].map((item, index) => (

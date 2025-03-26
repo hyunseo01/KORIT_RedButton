@@ -2,7 +2,7 @@
 
 import DrinkTypeSelect from "@/components/mobileMenuPage/DrinkTypeSelect";
 import MenuSelect from "@/components/mobileMenuPage/MenuSelect";
-import MenuHeader from "@/components/newMenu/MenuHeader";
+// import MenuHeader from "@/components/newMenu/MenuHeader";
 import { useEffect, useState } from "react";
 
 export default function MenuLayout({
@@ -42,7 +42,7 @@ export default function MenuLayout({
         </>
       ) : (
         <>
-          <MenuHeader />
+          {/* <MenuHeader /> */}
           {children}
         </>
       )}
