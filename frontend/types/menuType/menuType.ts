@@ -36,10 +36,10 @@ export type SetNameProps = {
 };
 
 export type NewMenuProps = {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 };
 export type NewMenuDrinkProps = {
-  params: { type: string };
+  params: Promise<{ type: string }>;
 };
 export const menuConfig: Record<string, { title: string; subTitle: string }> = {
   coffee: { title: "COFFEE", subTitle: "커피" },
