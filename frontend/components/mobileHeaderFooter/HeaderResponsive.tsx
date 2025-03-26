@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import HeaderSubResponsive2 from "./HeaderSubResponsive2";
 
 const HeaderResponsive = () => {
@@ -10,13 +11,13 @@ const HeaderResponsive = () => {
     <>
       <header className="bg-[#272422]">
         <div className="w-full max-w-[767px] h-[81px] px-5 py-3 flex items-center justify-between">
-          <a href="/" className="w-[50px] h-[50px] translate-y-[5px]">
+          <Link href="/" className="w-[50px] h-[50px] translate-y-[5px]">
             <img
               className="w-full h-full"
               src="https://redbutton.co.kr/wp-content/uploads/2021/03/GNB_logo.png"
               alt="Logo"
             />
-          </a>
+          </Link>
           <img
             onClick={() => setIsOpenSide((prev) => !prev)}
             className="w-[26px] h-[22px] cursor-pointer -translate-y-[1px]"
