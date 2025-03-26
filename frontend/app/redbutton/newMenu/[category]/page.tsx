@@ -3,39 +3,7 @@
 import { useState } from "react";
 import SetName from "@/components/newMenu/detail/SetName";
 import MenuList2 from "@/components/newMenu/MenuList2";
-import { NewMenuProps } from "@/types/menuType/menuType";
-
-const pageConfig: Record<
-  string,
-  { title?: string | string[]; subTitles: string[] }
-> = {
-  drink: {
-    title: [
-      "COFFEE",
-      "LATTE",
-      "TEA",
-      "ADE & JUICE",
-      "SHAKE & SMOOTHIE",
-      "SODA",
-    ],
-    subTitles: [
-      "커피",
-      "라떼",
-      "티",
-      "에이드 & 쥬스",
-      "쉐이크 & 스무디",
-      "소다",
-    ],
-  },
-  snack: {
-    title: "SNACK MENU",
-    subTitles: ["스낵/푸드"],
-  },
-  set: {
-    title: "SET MENU",
-    subTitles: ["세트메뉴"],
-  },
-};
+import { NewMenuProps, pageConfig } from "@/types/menuType/menuType";
 
 const NewMenuPage = ({ params: { category } }: NewMenuProps) => {
   const [selected, setSelected] = useState<number | null>(null);

@@ -38,3 +38,38 @@ export type SetNameProps = {
 export type NewMenuProps = {
   params: { category: string };
 };
+export type NewMenuDrinkProps = {
+  params: { type: string };
+};
+export const menuConfig: Record<string, { title: string; subTitle: string }> = {
+  coffee: { title: "COFFEE", subTitle: "커피" },
+  latte: { title: "LATTE", subTitle: "라떼" },
+  tea: { title: "TEA", subTitle: "티" },
+  ade: { title: "ADE & JUICE", subTitle: "에이드 & 쥬스" },
+  shake: { title: "SHAKE & SMOOTHIE", subTitle: "쉐이크 & 스무디" },
+  soda: { title: "SODA", subTitle: "소다" },
+};
+export const pageConfig: Record<
+  string,
+  { title?: string; subTitles: string[] }
+> = {
+  drink: {
+    title: "DRINK MENU",
+    subTitles: [
+      "커피",
+      "라떼",
+      "티",
+      "에이드 & 쥬스",
+      "쉐이크 & 스무디",
+      "소다",
+    ],
+  },
+  snack: {
+    title: "SNACK MENU",
+    subTitles: ["스낵/푸드"],
+  },
+  set: {
+    title: "SET MENU",
+    subTitles: ["세트메뉴"],
+  },
+};
