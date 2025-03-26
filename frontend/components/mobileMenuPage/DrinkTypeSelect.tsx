@@ -15,8 +15,8 @@ const DrinkTypeSelect = () => {
         name=""
         id=""
       >
-        {drinkArr.map((v, index) => (
-          <option key={index} value={v}>
+        {drinkArr.map((v, i) => (
+          <option key={i} value={v}>
             {v}
           </option>
         ))}
