@@ -3,10 +3,13 @@
 import MenuHeader from "@/components/newMenu/MenuHeader";
 import { useEffect, useState } from "react";
 
-type LayoutProps = { children: React.ReactNode; params: { category: string } };
+type LayoutProps = {
+  children: React.ReactNode;
+  params: Promise<{ category: string }>;
+};
 
-export default function Layout({ children, params }: LayoutProps) {
-  const { category } = params;
+export default async function Layout({ children, params }: LayoutProps) {
+  const { category } = await params;
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const handleResize = () => {
