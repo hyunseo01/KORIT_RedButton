@@ -2,6 +2,9 @@
 
 > **이 프로젝트는 TypeScript와 React, Next.js, Spring Boot를 활용하여 개발되었습니다.**  
 
+## 링크
+https://korit-red-button-63s7.vercel.app/
+
 ---
 
 ## 📖 목차  
