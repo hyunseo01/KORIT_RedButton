@@ -12,25 +12,25 @@ import java.util.List;
 public class PlaceController {
     @Autowired private PlaceService placeService;
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://korit-red-button-63s7.vercel.app/")
     @GetMapping("/findall.do")
     public List<PlaceEntity> findAll() {
         return placeService.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://korit-red-button-63s7.vercel.app/")
     @GetMapping("/{id}")
     public PlaceEntity findById(@PathVariable int id) {
         return placeService.findById(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://korit-red-button-63s7.vercel.app/")
     @PostMapping("/create")
     public PlaceEntity create(@RequestBody PlaceEntity place) {
         return placeService.save(place);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://korit-red-button-63s7.vercel.app/")
     @PutMapping("/update/{id}")
     public PlaceEntity update(@PathVariable int id, @RequestBody PlaceEntity place) {
         PlaceEntity existingPlace = placeService.findById(id);
@@ -49,7 +49,7 @@ public class PlaceController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://korit-red-button-63s7.vercel.app/")
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable int id) {
         placeService.deleteById(id);

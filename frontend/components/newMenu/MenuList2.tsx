@@ -13,7 +13,7 @@ const MenuList2 = ({ filterFn, select, onSelected }: MenuList2Props) => {
     fetch("http://localhost:8080/menu/findall.do")
       .then((res) => res.json())
       .then((data: MenuItem[]) => setItems(data))
-      .catch(() => alert("서버를 켜주세요"));
+      .catch((e) => console.log(e));
   }, []);
 
   return (

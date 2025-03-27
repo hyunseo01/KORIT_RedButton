@@ -12,25 +12,25 @@ import java.util.List;
 public class MenuController {
     @Autowired private MenuService menuService;
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://korit-red-button-63s7.vercel.app/")
     @GetMapping("/findall.do")
     public List<MenuEntity> findAll() {
         return menuService.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://korit-red-button-63s7.vercel.app/")
     @GetMapping("/{id}")
     public MenuEntity findById(@PathVariable int id) {
         return menuService.findById(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://korit-red-button-63s7.vercel.app/")
     @PostMapping("/create")
     public MenuEntity create(@RequestBody MenuEntity menu) {
         return menuService.save(menu);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://korit-red-button-63s7.vercel.app/")
     @PutMapping("/update/{id}")
     public MenuEntity update(@PathVariable int id, @RequestBody MenuEntity menu) {
         MenuEntity existingMenu = menuService.findById(id);
@@ -47,7 +47,7 @@ public class MenuController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://korit-red-button-63s7.vercel.app/")
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable int id) {
         menuService.deleteById(id);

@@ -20,7 +20,6 @@ const GamePageMap = () => {
         setFilteredData(data);
       })
       .catch((e) => {
-        alert("서버 켜라");
         console.error("Error: ", e);
       });
   }, []);
@@ -28,7 +27,7 @@ const GamePageMap = () => {
   const handleSearch = (searchTerm: string) => {
     const filtered = gameData.filter(
       (game) =>
-        game.koname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        game.koname.includes(searchTerm) ||
         game.enname.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredData(filtered);

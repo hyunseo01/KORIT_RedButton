@@ -47,7 +47,6 @@ function CrudManagement<T extends object, U extends object>({
 
   useEffect(() => {
     fetchEntities();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [endpoint]);
 
   const handleChange = (

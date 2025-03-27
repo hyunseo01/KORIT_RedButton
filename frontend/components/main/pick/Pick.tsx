@@ -14,7 +14,6 @@ const Pick = () => {
       .then((r) => r.json())
       .then((data) => setMainData(data))
       .catch((e) => {
-        alert("서버 켜라");
         console.error("Error : ", e);
       });
   }, []);
@@ -37,7 +36,7 @@ const Pick = () => {
         <span className="text-[18px]">버트너가 선정한 이 달의 메뉴입니다.</span>
         <div className="flex gap-[20px] mt-[50px] w-full">
           <div className="md:block hidden w-full">
-            <div className="flex gap-[20px]">
+            <div className="flex justify-center gap-[20px]">
               {filteredMenu.map((v) => (
                 <PickMenu
                   key={v.koname}
