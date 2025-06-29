@@ -27,7 +27,7 @@ const KakaoMap = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch("http://localhost:8080/place/findall.do");
+        const res = await fetch("https://render-0ggi.onrender.com/place/findall.do");
         const data = await res.json();
         setPlaces(data);
       } catch (e) {

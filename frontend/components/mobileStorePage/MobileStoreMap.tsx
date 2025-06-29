@@ -18,7 +18,7 @@ const MobileStoreMap = () => {
   const [region, setRegion] = useState("시/도");
 
   useEffect(() => {
-    fetch("http://localhost:8080/place/findall.do")
+    fetch("https://render-0ggi.onrender.com/place/findall.do")
       .then((r) => r.json())
       .then((v) => {
         setOrigin(() => v);

@@ -13,7 +13,7 @@ const GamePageMap = () => {
   const [filteredData, setFilteredData] = useState<Game[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/game/findall.do")
+    fetch("https://render-0ggi.onrender.com/game/findall.do")
       .then((r) => r.json())
       .then((data) => {
         setGameData(data);

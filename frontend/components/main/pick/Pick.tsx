@@ -10,7 +10,7 @@ const Pick = () => {
   const [mainData, setMainData] = useState<MenuItem[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/menu/findall.do")
+    fetch("https://render-0ggi.onrender.com/menu/findall.do")
       .then((r) => r.json())
       .then((data) => setMainData(data))
       .catch((e) => {

@@ -10,7 +10,7 @@ const MenuList2 = ({ filterFn, select, onSelected }: MenuList2Props) => {
   const [items, setItems] = useState<MenuItem[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/menu/findall.do")
+    fetch("https://render-0ggi.onrender.com/menu/findall.do")
       .then((res) => res.json())
       .then((data: MenuItem[]) => setItems(data))
       .catch((e) => console.log(e));

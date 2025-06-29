@@ -29,7 +29,7 @@ function CrudManagement<T extends object, U extends object>({
   const [form, setForm] = useState<U>(initialForm);
   const [editingId, setEditingId] = useState<number | null>(null);
 
-  const baseUrl = `http://localhost:8080/${endpoint}`;
+  const baseUrl = `https://render-0ggi.onrender.com/${endpoint}`;
 
   const fetchEntities = () => {
     fetch(`${baseUrl}/findall.do`)
