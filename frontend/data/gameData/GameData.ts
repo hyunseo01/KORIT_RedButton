@@ -1,6 +1,6 @@
 export const BoardData = [
   {
-    KoName: "라이헌트ㅋㅋㅋ",
+    KoName: "라이헌트",
     EnName: "Lie Hunt",
     Image:
       "https://redbutton.co.kr/wp-content/uploads/2024/09/%EB%9D%BC%EC%9D%B4%ED%97%8C%ED%8A%B8-%EC%8B%9C%ED%81%AC%EB%A6%BF%ED%85%94%EB%9F%AC.png",
